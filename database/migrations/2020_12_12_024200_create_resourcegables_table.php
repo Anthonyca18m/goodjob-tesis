@@ -16,6 +16,12 @@ class CreateResourcegablesTable extends Migration
         Schema::create('resourcegables', function (Blueprint $table) {
             $table->id();
 
+            $table->text('resource');
+            $table->text('op1')->nullable();
+            $table->text('op2')->nullable();
+            $table->text('op3')->nullable();
+            $table->text('op4')->nullable();
+            $table->text('op5')->nullable();
             $table->morphs('resourcegable');
 
             $table->timestamps();
