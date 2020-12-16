@@ -502,7 +502,7 @@ header {
         -ms-transition: 0.2s ease-in-out;
         -o-transition: 0.2s ease-in-out;
         transition: 0.2s ease-in-out;
-        text-transform: uppercase; }
+     }
         header .header-wrapper .header__icon-group a:hover {
           color: #e49c86; }
       header .header-wrapper .header__icon-group #search {
@@ -1850,7 +1850,7 @@ footer {
       .subcribe-bar__form .btn.-normal {
         padding: 0 0.9375em; } }
 
-.btn {
+/* .btn {
   color: #fff;
   font-size: 0.875em;
   font-weight: 700;
@@ -1866,9 +1866,9 @@ footer {
   -ms-transition: 0.2s ease-in-out;
   -o-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  display: inline-block; }
-  .btn:hover {
-    background-color: #dd8165; }
+  display: inline-block; } */
+  /* .btn:hover {
+    background-color: #dd8165; } */
   @media only screen and (max-width: 576px) {
     .btn {
       font-size: 14px; } }
@@ -3178,7 +3178,7 @@ Blog layouts
 .blog-food {
   margin-bottom: 5rem; }
   .blog-food .blog-food__slide__wrapper {
-    padding: 3.125em;
+    padding: 0.125em;
     background-color: #f5f5f5;
     margin-bottom: 5rem; }
     .blog-food .blog-food__slide__wrapper .blog-food__slide {
@@ -3390,7 +3390,8 @@ Blog layouts
 	Content
 ***************************/
 #content {
-  padding-top: 11.25rem; }
+  padding-top: 5.25rem;
+  background: #fff; }
   #content.no-pd {
     padding-top: 4.375rem; }
   #content.breadcrumb-pd {

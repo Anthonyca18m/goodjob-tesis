@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'default_profile' => 'https://www.impacto.com.pe/storage/resource_multimedia/basic_user_white.png',
 
     /*
     |--------------------------------------------------------------------------

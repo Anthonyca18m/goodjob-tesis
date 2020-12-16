@@ -12,11 +12,11 @@ class User extends Authenticatable
     use Notifiable, HasApiTokens;
 
     protected $fillable = [
-        'name',
         'account_type_id',
         'email',
         'password',
         'register',
+        'register_uid',
         'status'
     ];
 
@@ -30,28 +30,28 @@ class User extends Authenticatable
 
     public function accountType()
     {
-        return $this->hasOne(App\Models\AccountType::class);
+        return $this->hasOne(Models\AccountType::class);
     }
     public function profile()
     {
-        return $this->hasOne(App\Models\Profile::class);
+        return $this->hasOne(Models\Profile::class);
     }
     public function image()
     {
-        return $this->hasOne(App\Models\Resource::class);
+        return $this->morphOne(Models\Resource::class, 'resourcegable');
     }
     public function accountBanks()
     {
-        return $this->hasMany(App\Models\AcoountBank::class);
+        return $this->hasMany(Models\AcoountBank::class);
     }
 
 
     public function postulations()
     {
-        return $this->hasMany(App\Models\Postulation::class);
+        return $this->hasMany(Models\Postulation::class);
     }
     public function activities()
     {
-        return $this->hasMany(App\Models\Activity::class);
+        return $this->hasMany(Models\Activity::class);
     }
 }
