@@ -329,7 +329,7 @@ textarea {
 	Player color
 ***************************/
 .plyr--full-ui input[type="range"] {
-    color: #e49c86;
+    /* color: #e49c86; */
 }
 
 .plyr--audio {
@@ -338,7 +338,7 @@ textarea {
 .plyr--audio .plyr__control.plyr__tab-focus,
 .plyr--audio .plyr__control:hover,
 .plyr--audio .plyr__control[aria-expanded="true"] {
-    background: #e49c86;
+    /* background: #e49c86; */
 }
 .plyr--audio input[type="range"] {
     color: #111;
@@ -347,7 +347,7 @@ textarea {
 .plyr--video .plyr__control.plyr__tab-focus,
 .plyr--video .plyr__control:hover,
 .plyr--video .plyr__control[aria-expanded="true"] {
-    background: #e49c86;
+    /* background: #e49c86; */
 }
 
 .plyr__control--overlaid {
@@ -360,7 +360,7 @@ textarea {
 
 .plyr__menu__container
     .plyr__control[role="menuitemradio"][aria-checked="true"]::before {
-    background: #e49c86;
+    /* background: #e49c86; */
 }
 
 /***************************
@@ -441,7 +441,7 @@ header .header-wrapper nav ul > li > a:after {
     left: -100%;
     height: 3px;
     width: 100%;
-    background-color: #e49c86;
+    background-color: #00ff12;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
     -ms-transition: 0.2s ease-in-out;
@@ -501,7 +501,7 @@ header .header-wrapper .header__icon-group a {
     transition: 0.2s ease-in-out;
 }
 header .header-wrapper .header__icon-group a:hover {
-    color: #e49c86;
+    /* color: #e49c86; */
 }
 header .header-wrapper .header__icon-group #search {
     padding-right: 1.875em;
@@ -509,7 +509,7 @@ header .header-wrapper .header__icon-group #search {
     border-right: 1px solid #e1e1e1;
 }
 header .header-wrapper .header__icon-group #search.active {
-    color: #e49c86;
+    /* color: #e49c86; */
 }
 header .header-wrapper .header__icon-group .social a {
     margin: 0 0.625em;
@@ -1008,7 +1008,7 @@ header.-theme--violet .header-wrapper .header__icon-group #search.active {
     text-transform: uppercase;
 }
 .post-card-quote.-border {
-    border: 2px solid #e49c86;
+    /* border: 2px solid #e49c86; */
     background-color: transparent;
     padding-top: 0;
     margin-top: 3.125em;
@@ -6303,7 +6303,7 @@ Blog layouts
 }
 .checkout__total table.total__provisional tbody td:first-child span {
     float: left;
-    color: #e49c86;
+    /* color: #e49c86; */
     font-size: 0.9375em;
     font-weight: 600;
     line-height: 1.5em;

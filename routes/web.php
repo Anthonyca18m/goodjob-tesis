@@ -22,3 +22,10 @@ Route::post('/logout', 'AuthController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'WebController@index')->name('web');
+Route::get('/q', 'WebController@index')->name('web');
+
+Route::get('/nosotros', 'WebController@index')->name('nosotros');
+Route::get('/contactanos', 'WebController@index')->name('contacts');
+
+Route::get('/activity/{name}', 'WebController@activity')->name('activity');
+

@@ -1,23 +1,24 @@
 <header class="theme-default">
     <div id="search-box">
       <div class="container">
-        <form action="https://afinda.vn/" method="POST">
-          <input type="text" placeholder="Searching for news" name="search"/>
+        <form action="{{ route('web') }}" method="GET">
+          <input type="text" placeholder="Ingrese palabra a buscar" name="search"/>
           <button><i class="fas fa-arrow-right"></i></button>
         </form>
       </div>
     </div>
     <div class="container">
-      <div class="header-wrapper"><a class="header__logo" href="index.html"><img src="images/logogb.png" alt="Logo"/></a>
+      <div class="header-wrapper"><a class="header__logo" href="{{ route('web') }}"><img src="images/logogb.png" alt="Logo"/></a>
         <nav class="mt-3">
           <ul>
-            <li class="nav-item active"><a href="index.html">Inicio</a>
+            <li class="nav-item active"><a href="{{ route('web') }}">Inicio</a>
             </li>
-            <li class="nav-item"><a href="about.html">Nosotros</a></li>
-            <li class="nav-item"><a href="contact.html">Contáctanos</a></li>
+            <li class="nav-item"><a href="{{ route('nosotros') }}">Nosotros</a></li>
+            <li class="nav-item"><a href="{{ route('contacts') }}">Contáctanos</a></li>
           </ul>
         </nav>
-        <div class="header__icon-group"><a href="#" id="search"><i class="fas fa-search"></i></a>
+        <div class="header__icon-group">
+            <a href="#" id="search"><i class="fas fa-search"></i></a>
             <div class="social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -34,7 +35,6 @@
                         {{ Auth::user()->email }} <i class="fad fa-user-circle"></i>
                     </a>
                 @endguest
-
                 <a id="mobile-menu-controller" href="#"><i class="fas fa-bars"></i></a>
             </div>
         </div>
