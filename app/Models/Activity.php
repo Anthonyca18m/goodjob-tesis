@@ -20,7 +20,8 @@ class Activity extends Model
         'address',
         'address_reference',
         'ubigeo',
-        'country'
+        'country',
+        'status',
     ];
 
     public function user()
@@ -34,5 +35,9 @@ class Activity extends Model
     public function resource()
     {
         return $this->morphMany(Resource::class, 'resourcegable');
+    }
+    public function district()
+    {
+        return $this->hasOne(District::class, 'id', 'ubigeo');
     }
 }

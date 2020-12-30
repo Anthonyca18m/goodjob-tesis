@@ -2767,6 +2767,163 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'form-register-activity-component',
+  props: ['user_id'],
+  data: function data() {
+    return {
+      activity: {
+        title: '',
+        description: '',
+        image: [],
+        date_init: '',
+        date_end: '',
+        nro_person: 1,
+        district: '',
+        address: '',
+        maps: ''
+      },
+      districts: []
+    };
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      var formData = new FormData(event.target);
+      axios.post('api/web/activity/register', formData).then(function (_ref) {
+        var data = _ref.data;
+
+        _this.clear();
+
+        Swal.fire({
+          title: '¡Buen Trabajo!',
+          text: "Has registrado una nueva actividad en GoodJob!",
+          icon: 'success',
+          allowOutsideClick: false,
+          showCancelButton: false,
+          confirmButtonColor: '#F96302',
+          confirmButtonText: 'Aceptar'
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            location.href = '';
+          }
+        });
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this.$setLaravelErrors(err.response.data.errors);
+        }
+      });
+    },
+    getDistricts: function getDistricts() {
+      var _this2 = this;
+
+      axios.get('api/web/ubigeo/district/1501').then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.districts = data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    open: function open() {
+      if (this.districts.length <= 0) this.getDistricts();
+    },
+    clear: function clear() {
+      this.activity.title = '';
+      this.activity.description = '';
+      this.activity.image = [];
+      this.activity.date_init = '';
+      this.activity.date_end = '';
+      this.activity.nro_person = 1;
+      this.activity.district = '';
+      this.activity.address = '';
+      this.activity.maps = '';
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/user/ModalRegisterClientComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/user/ModalRegisterClientComponent.vue?vue&type=script&lang=js& ***!
@@ -44336,6 +44493,508 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card mb-3 shadow-sm" }, [
+    _c(
+      "div",
+      {
+        staticClass: "card-header bg-white",
+        staticStyle: { cursor: "pointer" },
+        attrs: {
+          "data-toggle": "collapse",
+          "data-target": ".collapse-post",
+          "aria-expanded": "false",
+          "aria-controls": "collapse-post"
+        },
+        on: { click: _vm.open }
+      },
+      [_vm._m(0)]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "card-body collapse collapse-post",
+        attrs: { id: "collapse-post" }
+      },
+      [
+        _c(
+          "form",
+          {
+            staticClass: "row",
+            attrs: {
+              method: "POST",
+              id: "FormRegisterPost",
+              enctype: "multipart/form-data"
+            },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.save($event)
+              }
+            }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "user_id" },
+              domProps: { value: _vm.user_id }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.title,
+                    expression: "activity.title",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "title",
+                    expression: "'title'"
+                  }
+                ],
+                staticClass: "form-control mb-2",
+                attrs: {
+                  type: "text",
+                  name: "title",
+                  placeholder: "Ingresar titulo"
+                },
+                domProps: { value: _vm.activity.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.activity, "title", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.description,
+                    expression: "activity.description",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "description",
+                    expression: "'description'"
+                  }
+                ],
+                staticClass: "form-control",
+                staticStyle: { "max-height": "130px" },
+                attrs: {
+                  name: "description",
+                  placeholder: "Ingrese descripción"
+                },
+                domProps: { value: _vm.activity.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.activity,
+                      "description",
+                      $event.target.value.trim()
+                    )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 mb-2" }, [
+              _c("div", { staticClass: "custom-file mt-2" }, [
+                _c("input", {
+                  staticClass: "custom-file-input",
+                  attrs: { type: "file", name: "image", accept: "image/*" }
+                }),
+                _vm._v(" "),
+                _c("label", { staticClass: "custom-file-label" }, [
+                  _vm._v("Subir Imagen Principal")
+                ]),
+                _vm._v(" "),
+                _c("span", {
+                  directives: [
+                    {
+                      name: "has-error",
+                      rawName: "v-has-error",
+                      value: "image",
+                      expression: "'image'"
+                    }
+                  ]
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("label", [_vm._v("Fecha de Inicio:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.date_init,
+                    expression: "activity.date_init",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "date_init",
+                    expression: "'date_init'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "datetime-local", name: "date_init" },
+                domProps: { value: _vm.activity.date_init },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.activity,
+                      "date_init",
+                      $event.target.value.trim()
+                    )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("label", [_vm._v("Fecha de Fin:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.date_end,
+                    expression: "activity.date_end",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "date_end",
+                    expression: "'date_end'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "datetime-local", name: "date_end" },
+                domProps: { value: _vm.activity.date_end },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.activity,
+                      "date_end",
+                      $event.target.value.trim()
+                    )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("label", [_vm._v("N° personas requeridas:")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.trim",
+                      value: _vm.activity.nro_person,
+                      expression: "activity.nro_person",
+                      modifiers: { trim: true }
+                    },
+                    {
+                      name: "has-error",
+                      rawName: "v-has-error",
+                      value: "nro_person",
+                      expression: "'nro_person'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "nro_person" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.activity,
+                        "nro_person",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    { attrs: { value: "", selected: "", disabled: "" } },
+                    [_vm._v("Seleccionar Nro")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(100, function(y, x) {
+                    return _c("option", { key: x, domProps: { value: y } }, [
+                      _vm._v(_vm._s(y))
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 mt-2" }, [
+              _c("label", [_vm._v("Distrito:")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.trim",
+                      value: _vm.activity.district,
+                      expression: "activity.district",
+                      modifiers: { trim: true }
+                    },
+                    {
+                      name: "has-error",
+                      rawName: "v-has-error",
+                      value: "district",
+                      expression: "'district'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "district" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.activity,
+                        "district",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "option",
+                    { attrs: { value: "", disabled: "", selected: "" } },
+                    [_vm._v("Seleccionar Distrito")]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.districts, function(district, index) {
+                    return _c(
+                      "option",
+                      { key: index, domProps: { value: district.id } },
+                      [_vm._v(_vm._s(district.name))]
+                    )
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 mt-2" }, [
+              _c("label", [_vm._v("Dirección:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.address,
+                    expression: "activity.address",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "address",
+                    expression: "'address'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "address",
+                  placeholder: "Ingrese dirección"
+                },
+                domProps: { value: _vm.activity.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.activity,
+                      "address",
+                      $event.target.value.trim()
+                    )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 mt-2" }, [
+              _c("label", [_vm._v("Url de Dirección:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.maps,
+                    expression: "activity.maps",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "url_address",
+                    expression: "'url_address'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "url",
+                  name: "url_address",
+                  placeholder: "Ingrese url de google maps"
+                },
+                domProps: { value: _vm.activity.maps },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.activity, "maps", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [
+      _c("span", { staticClass: "m-0 h5" }, [_vm._v("Publicar actividad")]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-muted" }, [
+        _vm._v("(Click para desplegar)")
+      ]),
+      _vm._v(" "),
+      _c("i", { staticClass: "fad fa-chevron-double-down float-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("p", { staticClass: "mt-2" }, [
+        _c("b", [_vm._v("Nota:")]),
+        _vm._v(" Peso máximo por imagen es 1024kb = 1MB "),
+        _c("br")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-success border float-right mt-2" }, [
+        _vm._v("Publicar")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-muted" }, [
+        _vm._v(
+          "Al registrarse la actividad podrá agregar más imagenes en su editor de actividades."
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/user/ModalRegisterClientComponent.vue?vue&type=template&id=346eabe0&":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/user/ModalRegisterClientComponent.vue?vue&type=template&id=346eabe0& ***!
@@ -57083,6 +57742,7 @@ var map = {
 	"./components/passport/AuthorizedClients.vue": "./resources/js/components/passport/AuthorizedClients.vue",
 	"./components/passport/Clients.vue": "./resources/js/components/passport/Clients.vue",
 	"./components/passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue",
+	"./components/web/activity/FormRegisterActivityComponent.vue": "./resources/js/components/web/activity/FormRegisterActivityComponent.vue",
 	"./components/web/user/ModalRegisterClientComponent.vue": "./resources/js/components/web/user/ModalRegisterClientComponent.vue"
 };
 
@@ -57176,12 +57836,17 @@ try {
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // window.axios.defaults.headers.common['Authorization'] =  "Bearer " + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzdhM2YzNGQyNTc3NWE2ZWY5ZGIxNDM0M2YyZjk4MmE1ZDQ5NzRkMmU2MGIxZjY3MTg5YTdjZGYzYjk5NWVmMTY0NzlhODcxZTU1M2Q2NGMiLCJpYXQiOjE1OTYwMzU4NjUsIm5iZiI6MTU5NjAzNTg2NSwiZXhwIjoxNjI3NTcxODY1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.lgJ8l9dUZtBpadqbFhbCEyu6gGEEjsb_eXs9BZJzBmqPNzXm4OW5hKgpF7UHvkzzN7P9igU3ABdXNTZgrb7d5YTXRhp6itZ9IDHllt7OrNoquQzYm37La0HjQCZwo7093I3zrNDRAVwQqsUHQEMofo-eOzh1BXf0qH5qPQseH76UwT9mkDpQB5U5RluXWnbsjotQDt6inAhChUimTbliDGCQzhIg2yOwyLny5SoVFPpz2SuWuvAnD1MI0CMCy12_tOlySztrIHYKe62FgqNGd14zQWxsEzj7OMF6HMSrMjAe1PjvLkG3ABTg6EXN0R9Sk-KEFjt_GgpQJto8FenYvL1qzo6a1rHr2kMMca2tNTWaUakRdwOdWBJDAJ1wgSOhDa_Ck3DFtvQhYPv35GuY7TBnWlgovmKcVGP81C5Px8uCcxBj1DknBu3uqF_ryOF3YssTJOCBNLkRA1MGZbn_kt7XV8es-kSnOVYs3xgr3XmKBIBM5aQHSWAJotMZgUAWyogolwlwN9PBVseVrAb0oR9RgZQlzns5KRGBWucVCoRPNIb6lcEZmzTJzvX7PN6wcEeiM22njxjJzR4SpFPVsBxBLFEUKE2dMEshe12wWJsxLSIvUjppjEJHDi8Vql25izLWJtJqM685AKJQszsddJlOnaQpL66zVy8cUZPUeP8';
+
+axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -57531,6 +58196,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/web/activity/FormRegisterActivityComponent.vue":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/web/activity/FormRegisterActivityComponent.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d& */ "./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d&");
+/* harmony import */ var _FormRegisterActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormRegisterActivityComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormRegisterActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/web/activity/FormRegisterActivityComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormRegisterActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormRegisterActivityComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormRegisterActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d& ***!
+  \***************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormRegisterActivityComponent_vue_vue_type_template_id_2462c56d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/web/user/ModalRegisterClientComponent.vue":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/web/user/ModalRegisterClientComponent.vue ***!
@@ -57618,8 +58352,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\goodjob-tesis\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\goodjob-tesis\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Carloz\Desktop\goodjob-tesis\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Carloz\Desktop\goodjob-tesis\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

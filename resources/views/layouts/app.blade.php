@@ -15,7 +15,6 @@
     <link sync rel="shortcut icon" type="image/png" href="images/fav.png"/>
 
     <link sync rel="stylesheet" href="{{ asset('css/elegant.css') }}"/>
-    <link sync rel="stylesheet" href="{{ asset('css/custom_bootstrap.css') }}"/>
     <link sync rel="stylesheet" href="{{ asset('css/slick.css') }}"/>
     <link sync rel="stylesheet" href="{{ asset('css/plyr.min.css') }}"/>
 
@@ -25,6 +24,7 @@
     <div id="app">
         @yield('content')
     </div>
+
 
     <script sync src="{{ asset('js/app.js') }}"></script>
 

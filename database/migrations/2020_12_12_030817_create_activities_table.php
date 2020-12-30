@@ -26,6 +26,7 @@ class CreateActivitiesTable extends Migration
             $table->string('address_reference')->nullable();
             $table->string('ubigeo');
             $table->string('country');
+            $table->integer('status');
 
             $table->timestamps();
         });

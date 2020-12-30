@@ -21,6 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'web/'], function() {
 
-    Route::post('client/register',                'API\ClientController@store');
+    Route::post('client/register',                    'API\ClientController@store');
+
+
+    Route::post('activity/register',                  'API\ActivityController@store');
+
+    
+    Route::get('ubigeo/district/{province_id}',       'API\UbigeoController@getDistricts');
 
 });
