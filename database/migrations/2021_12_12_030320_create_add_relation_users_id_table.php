@@ -59,6 +59,18 @@ class CreateAddRelationUsersIdTable extends Migration
             $table->bigInteger('type_resource_id')->unsigned()->nullable()->after('id');
             $table->foreign('type_resource_id')->references('id')->on('type_resources')->onDelete('set null')->onUpdate('cascade');
         });
+
+        Schema::table('districts', function(Blueprint $table) {
+
+            $table->string('province_id', 8)->nullable()->after('id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::table('provinces', function(Blueprint $table) {
+
+            $table->string('department_id', 8)->nullable()->after('id');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**
