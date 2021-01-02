@@ -21,7 +21,9 @@
                             <div class="post-card -center">
                                 <div class="card__cover -slide">
                                     <div class="card__cover__slide-item">
-                                        <img src="{{ $activity->resource[0]->resource }}" alt="{{ $activity->title }}" />
+                                        <a href="{{ route('activity', [$activity->title]) }}">
+                                            <img src="{{ $activity->resource[0]->resource }}" alt="{{ $activity->title }}" />
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="card__content">
@@ -61,7 +63,9 @@
                             <div class="post-card -center">
                                 <div class="card__cover -slide">
                                     <div class="card__cover__slide-item">
-                                        <img src="{{ $activity->resource[0]->resource }}" alt="{{ $activity->title }}" />
+                                        <a href="{{ route('activity', [$activity->title]) }}">
+                                            <img src="{{ $activity->resource[0]->resource }}" alt="{{ $activity->title }}" />
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="card__content">
