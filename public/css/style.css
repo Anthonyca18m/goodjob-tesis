@@ -531,7 +531,7 @@ header .header-wrapper .header__icon-group .social #mobile-menu-controller {
     }
 }
 header.scroll-down .header-wrapper {
-    padding: 20px 0;
+    /* padding: 20px 0; */
 }
 header.is-mobile {
     font-size: 15px;

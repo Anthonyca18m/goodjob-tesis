@@ -25,6 +25,9 @@
         @yield('content')
     </div>
 
+    <script>
+        window.user_logeo = @json(auth()->user());
+    </script>
 
     <script sync src="{{ asset('js/app.js') }}"></script>
 

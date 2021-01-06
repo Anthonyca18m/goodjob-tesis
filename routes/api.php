@@ -26,7 +26,10 @@ Route::group(['prefix' => 'web/'], function() {
 
     Route::post('activity/register',                  'API\ActivityController@store');
 
-    
+
+    Route::post('postulation/register',               'API\PostulationController@store');
+
+
     Route::get('ubigeo/district/{province_id}',       'API\UbigeoController@getDistricts');
 
 });

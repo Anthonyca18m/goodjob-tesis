@@ -2767,6 +2767,49 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'btn-postulation-activity-component',
+  props: ['activity_id'],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    postulation: function postulation() {
+      var form = new FormData();
+      form.append('user_id', user_logeo.id);
+      form.append('activity_id', this.activity_id);
+      axios.post('api/web/postulation/register', form).then(function (_ref) {
+        var data = _ref.data;
+
+        if (data == 1) {
+          Swal.fire('Ya postulaste', 'Solo se puede postular una sola vez por actividad!.', 'info');
+        } else {
+          Swal.fire('Postulación Exitosa', 'Te has postulado exitosamente!.', 'success');
+        }
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=script&lang=js& ***!
@@ -44493,6 +44536,38 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn btn-danger btn-block m-2",
+      attrs: { title: "Postular" },
+      on: { click: _vm.postulation }
+    },
+    [_vm._v("\n    Postular\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d&":
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/FormRegisterActivityComponent.vue?vue&type=template&id=2462c56d& ***!
@@ -57742,6 +57817,7 @@ var map = {
 	"./components/passport/AuthorizedClients.vue": "./resources/js/components/passport/AuthorizedClients.vue",
 	"./components/passport/Clients.vue": "./resources/js/components/passport/Clients.vue",
 	"./components/passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue",
+	"./components/web/activity/BtnPostulationActivityComponent.vue": "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue",
 	"./components/web/activity/FormRegisterActivityComponent.vue": "./resources/js/components/web/activity/FormRegisterActivityComponent.vue",
 	"./components/web/user/ModalRegisterClientComponent.vue": "./resources/js/components/web/user/ModalRegisterClientComponent.vue"
 };
@@ -58191,6 +58267,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnPostulationActivityComponent.vue ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c& */ "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c&");
+/* harmony import */ var _BtnPostulationActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BtnPostulationActivityComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BtnPostulationActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/web/activity/BtnPostulationActivityComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnPostulationActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnPostulationActivityComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnPostulationActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c& ***!
+  \*****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnPostulationActivityComponent_vue_vue_type_template_id_d813839c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
