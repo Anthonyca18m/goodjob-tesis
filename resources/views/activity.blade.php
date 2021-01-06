@@ -45,30 +45,7 @@
                         @include('layouts.sidebar_right')
                     </div>
                     <div class="col-md-10">
-                        <div class="post-footer__comment border-top mt-3 border-success rounded">
-                            <h3 class="comment-title text-center"> <span>Comentarios</span></h3>
-                            <div class="post-footer__comment__detail border rounded pl-3 pr-3 pt-3 shadow-sm">
-                                <div class="comment__item">
-                                    <div class="comment__item__avatar">
-                                        <img class="img-fluid" src="{{ $user->image->resource }}" alt="Author avatar" width="50" />
-                                    </div>
-                                    <div class="comment__item__content">
-                                        <div class="comment__item__content__header">
-                                            <h5>Brandon Kelley</h5>
-                                            <div class="data">
-                                                <p><i class="far fa-clock"></i>Agosto,15, 2019</p>
-                                                <p><i class="far fa-heart"></i>12</p>
-                                            </div>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum suspendisse ultrices gravida lacus vel facilisis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-footer__comment__form">
-                                <textarea placeholder="Escribe tu comentario" name="message"></textarea>
-                                <button class="btn btn-light border text-right pl-5 pr-5">Comentar</button>
-                            </div>
-                        </div>
+                        <comments-activity-component :activity_id="{{ $activity->id }}"></comments-activity-component>
                     </div>
                     @else
                     <div class="col-md-12">

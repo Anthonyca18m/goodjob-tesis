@@ -2939,14 +2939,14 @@ footer .copyright {
     font-size: 1.125em;
     font-weight: 600;
     line-height: 1;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 .post-footer__comment__detail .comment__item__content__header .data p {
     color: #888;
     font-size: 0.8125em;
     font-weight: 500;
     line-height: 1;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     display: inline-block;
     margin: 0 0.76923em;
 }

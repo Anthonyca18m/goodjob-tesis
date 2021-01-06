@@ -1,6 +1,7 @@
 require('./bootstrap');
 window.Vue = require('vue');
 import VueHasErrorLaravel from 'vue-has-error-laravel'
+import moment from "moment"
 
 const Swal = require('sweetalert2')
 const Toast = Swal.mixin({
@@ -24,6 +25,10 @@ Vue.use(VueHasErrorLaravel,{
     showErrorMessage:true
 })
 
+moment.locale('es')
+Vue.filter('mydate_messages', function(date_at){
+    return moment(date_at).format('LLL a') // September 16, 2020 1:28 PM
+})
 
 
 

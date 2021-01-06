@@ -8,7 +8,12 @@ use Laravel\Passport\HasApiTokens;
 
 class PuntationComment extends Model
 {
+    use Notifiable, HasApiTokens;
+
     protected $fillable = [
+        'user_id',
+        'puntationable_type',
+        'puntationable_id',
         'puntation',
         'comment',
         'status'
@@ -18,4 +23,10 @@ class PuntationComment extends Model
     {
         return $this->morphTo();
     }
+
+    public function user()
+    {
+        return $this->hasOne(Profile::class, 'user_id', 'user_id');
+    }
+
 }
