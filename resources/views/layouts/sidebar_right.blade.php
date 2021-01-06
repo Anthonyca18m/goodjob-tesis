@@ -19,7 +19,11 @@
                     </tr>
                     @if ($user->account_type_id == 1)
                     <tr>
-                        <th><i class="fad fa-th-list"></i> Mis postulaciones</th>
+                        <th>
+                            <a class="text-dark text-decoration-none" href="{{ route('profile', ['q' => 'postulations']) }}">
+                                <i class="fad fa-th-list"></i> Mis postulaciones
+                            </a>
+                        </th>
                     </tr>
                     @endif
                     @if ($user->account_type_id == 2)

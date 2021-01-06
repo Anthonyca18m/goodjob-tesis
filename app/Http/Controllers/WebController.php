@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Postulation;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -14,7 +15,7 @@ class WebController extends Controller
         }])->where('status', 1)->orderByDesc('created_at')->paginate(18);
 
         if(isset($request->search)){
-            
+
             $clear = array("'", '"');
             $search = str_replace($clear, "", $request->search);
             $activities = Activity::with('district')->with(['resource' => function ($query) {
@@ -41,5 +42,15 @@ class WebController extends Controller
 
         return view('activity')
             ->with('activity', $activity);
+    }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        $postulations = Postulation::where('user_id', $user->id)->get();
+
+        return view('profile')
+            ->with('postulations', $postulations)
+            ;
     }
 }

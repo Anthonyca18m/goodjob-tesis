@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'WebController@index')->name('web');
 
+Route::get('/profile', 'WebController@profile')->name('profile');
+
 Route::get('/nosotros', 'WebController@index')->name('nosotros');
 Route::get('/contactanos', 'WebController@index')->name('contacts');
 
