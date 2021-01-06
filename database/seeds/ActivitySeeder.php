@@ -16,7 +16,7 @@ class ActivitySeeder extends Seeder
     {
         $activity = Activity::create([
             'user_id' => 2,
-            'title' => 'Que es Lorem Ipsum',
+            'title' => 'Que es Lorsdawdaem Ipsum',
             'description' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.',
             'date_init' => Carbon::now(),
             'date_end' => date('Y-m-d H:i:s', strtotime("+3 days")),
@@ -36,7 +36,7 @@ class ActivitySeeder extends Seeder
 
         $activity = Activity::create([
             'user_id' => 2,
-            'title' => 'Que es Lorem Ipsum',
+            'title' => 'Que es Lor sdfsef em Ipsum',
             'description' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.',
             'date_init' => Carbon::now(),
             'date_end' => date('Y-m-d H:i:s', strtotime("+1 days")),
@@ -55,7 +55,7 @@ class ActivitySeeder extends Seeder
 
         $activity = Activity::create([
             'user_id' => 2,
-            'title' => 'Que es Lorem Ipsum',
+            'title' => 'Que es Loremfses  Ipsum',
             'description' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.',
             'date_init' => Carbon::now(),
             'date_end' => date('Y-m-d H:i:s', strtotime("+4 days")),
@@ -74,7 +74,7 @@ class ActivitySeeder extends Seeder
 
         $activity = Activity::create([
             'user_id' => 2,
-            'title' => 'Que es Lorem Ipsum',
+            'title' => 'Que esgss Lorem Ipsum',
             'description' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.',
             'date_init' => Carbon::now(),
             'date_end' => date('Y-m-d H:i:s', strtotime("+6 days")),
@@ -92,7 +92,7 @@ class ActivitySeeder extends Seeder
 
         $activity = Activity::create([
             'user_id' => 2,
-            'title' => 'Que es Lorem Ipsum',
+            'title' => 'Que es Lgdrfgdrorem Ipsum',
             'description' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.',
             'date_init' => Carbon::now(),
             'date_end' => date('Y-m-d H:i:s', strtotime("+5 days")),
