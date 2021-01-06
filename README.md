@@ -26,9 +26,10 @@ de un ambiente en especifico en lima.
 - Xampp (motor de base de datos MYSQL)
 - Si tiene contraseña su motor de datos escribirlos en el archivo .env : DB_USERNAME=HERE_USER_DB DB_PASSWORD=HERE_PASSWORD_DB
 
-## Laravel Sponsors
+## Usuarios por defecto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Usuario Cliente Normal: user: user@goodjob.com password: password
+- Usuario Cliente Empresa: user: company@goodjob.com password: password 
 
 ### Premium Partners
 
