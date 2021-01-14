@@ -48,7 +48,7 @@
                         <comments-activity-component :activity_id="{{ $activity->id }}"></comments-activity-component>
                     </div>
                     @else
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <h1>{{ $activity->title }}</h1>
                         <img src="{{ $activity->resource[0]->resource }}" alt="">
                         <h5 class="mt-3">{{ $activity->description }}</h5>

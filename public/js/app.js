@@ -2979,6 +2979,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'form-register-activity-component',
   props: ['user_id'],
@@ -2993,8 +2997,10 @@ __webpack_require__.r(__webpack_exports__);
         nro_person: 1,
         district: '',
         address: '',
-        maps: ''
+        maps: '',
+        tag: ''
       },
+      tags: [],
       districts: []
     };
   },
@@ -3050,8 +3056,17 @@ __webpack_require__.r(__webpack_exports__);
       this.activity.district = '';
       this.activity.address = '';
       this.activity.maps = '';
+      this.activity.tag = '';
+      this.tags = [];
+    },
+    addTag: function addTag() {
+      if (this.activity.tag != '') {
+        this.tags.push(this.activity.tag.replace(',', ''));
+        this.activity.tag = '';
+      }
     }
-  }
+  },
+  watch: {}
 });
 
 /***/ }),
@@ -66506,6 +66521,69 @@ var render = function() {
                       "description",
                       $event.target.value.trim()
                     )
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 mt-2 d-flex" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.tag,
+                    expression: "activity.tag",
+                    modifiers: { trim: true }
+                  }
+                ],
+                staticClass: "form-control mb-2 mr-2",
+                attrs: { type: "text", placeholder: "Ingrese tag" },
+                domProps: { value: _vm.activity.tag },
+                on: {
+                  keypress: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.addTag($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.activity, "tag", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.tags,
+                    expression: "tags",
+                    modifiers: { trim: true }
+                  }
+                ],
+                staticClass: "form-control mb-2",
+                attrs: { type: "text", name: "tags", readonly: "" },
+                domProps: { value: _vm.tags },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.tags = $event.target.value.trim()
                   },
                   blur: function($event) {
                     return _vm.$forceUpdate()

@@ -35,9 +35,11 @@ class ActivityController extends Controller
 
             DB::transaction(function () use($request) {
 
+                $title = preg_replace('([^A-Za-z0-9])', ' ', $request->title);
+
                 $activity = Activity::create([
                     'user_id' => $request->user_id,
-                    'title' => $request->title,
+                    'title' => $title,
                     'description' => $request->description,
                     'date_init' => $request->date_init,
                     'date_end' => $request->date_end,
@@ -56,6 +58,15 @@ class ActivityController extends Controller
                     'type_resource_id' => 2,
                     'resource' => getenv('APP_URL') . '/storage/activities/' . $file,
                 ]);
+
+                $tags = explode(',', $request->tags);
+                for ($i=0; $i < count($tags); $i++) {
+
+                    $activity->tags()->create([
+                        'name' => $tags[$i]
+                    ]);
+                }
+
             });
         }
     }

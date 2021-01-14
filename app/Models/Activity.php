@@ -40,4 +40,9 @@ class Activity extends Model
     {
         return $this->hasOne(District::class, 'id', 'ubigeo');
     }
+
+    public function tags()
+    {
+        return $this->morphMany(Tag::class, 'taggable');
+    }
 }

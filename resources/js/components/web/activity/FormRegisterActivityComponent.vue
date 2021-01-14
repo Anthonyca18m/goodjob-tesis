@@ -18,6 +18,10 @@
                     <textarea v-model.trim="activity.description" name="description" class="form-control" v-has-error="'description'"
                     placeholder="Ingrese descripción" style="max-height:130px;"></textarea>
                 </div>
+                <div class="col-md-12 mt-2 d-flex">
+                    <input type="text" v-model.trim="activity.tag" @keypress.enter="addTag" class="form-control mb-2 mr-2" placeholder="Ingrese tag">
+                    <input type="text" v-model.trim="tags" name="tags" class="form-control mb-2" readonly>
+                </div>
                 <div class="col-md-12 mb-2">
                     <div class="custom-file mt-2">
                         <input type="file" class="custom-file-input" name="image" accept="image/*">
@@ -84,7 +88,9 @@ export default {
             district: '',
             address: '',
             maps: '',
+            tag: '',
         },
+        tags: [],
         districts: [],
     }),
     methods: {
@@ -135,8 +141,17 @@ export default {
             this.activity.district = ''
             this.activity.address = ''
             this.activity.maps = ''
+            this.activity.tag = ''
+            this.tags = []
+        },
+        addTag(){
+            if(this.activity.tag != ''){
+                this.tags.push(this.activity.tag.replace(',', ''));
+                this.activity.tag = ''
+            }
         },
     },
+    watch: {}
 }
 </script>
 
