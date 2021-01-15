@@ -2983,6 +2983,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'form-register-activity-component',
   props: ['user_id'],
@@ -2998,7 +3002,8 @@ __webpack_require__.r(__webpack_exports__);
         district: '',
         address: '',
         maps: '',
-        tag: ''
+        tag: '',
+        amount: 0
       },
       tags: [],
       districts: []
@@ -3057,6 +3062,7 @@ __webpack_require__.r(__webpack_exports__);
       this.activity.address = '';
       this.activity.maps = '';
       this.activity.tag = '';
+      this.activity.amount = 0;
       this.tags = [];
     },
     addTag: function addTag() {
@@ -66894,6 +66900,42 @@ var render = function() {
                       return
                     }
                     _vm.$set(_vm.activity, "maps", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 mt-2" }, [
+              _c("label", [_vm._v("Monto de Recompensa: (Monto en Soles)")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.activity.amount,
+                    expression: "activity.amount",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "has-error",
+                    rawName: "v-has-error",
+                    value: "amount",
+                    expression: "'amount'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "number", name: "amount" },
+                domProps: { value: _vm.activity.amount },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.activity, "amount", $event.target.value.trim())
                   },
                   blur: function($event) {
                     return _vm.$forceUpdate()

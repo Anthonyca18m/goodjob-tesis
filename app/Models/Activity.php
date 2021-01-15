@@ -24,6 +24,7 @@ class Activity extends Model
         'status',
     ];
 
+
     public function user()
     {
         return $this->belongsTo(App\Models\User::class);
@@ -44,5 +45,19 @@ class Activity extends Model
     public function tags()
     {
         return $this->morphMany(Tag::class, 'taggable');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(PuntationComment::class, 'puntationable');
+    }
+    public function comments()
+    {
+        return $this->morphMany(PuntationComment::class, 'puntationable');
+    }
+
+    public function reward()
+    {
+        return $this->morphOne(Reward::class, 'rewardable');
     }
 }

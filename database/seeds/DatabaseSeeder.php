@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AccountTypeSeeder::class,
             ResourceTypeSeeder::class,
             UserSeeder::class,
+            TypeRewardSeeder::class,
             ActivitySeeder::class,
         ]);
     }

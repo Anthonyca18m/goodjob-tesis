@@ -32,15 +32,15 @@
                                     <div class="card__content-info">
                                         <div class="info__comment m-2" title="Me gusta">
                                             <i class="fa fa-heart"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->likes_count }}</p>
                                         </div>
                                         <div class="info__comment m-2" title="Comentarios">
                                             <i class="far fa-comment"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->comments_count }}</p>
                                         </div>
                                         <div class="info__comment m-2" title="Personas Requeridas">
                                             <i class="far fa-users"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->person_required }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -74,15 +74,15 @@
                                     <div class="card__content-info">
                                         <div class="info__comment m-2" title="Me gusta">
                                             <i class="fa fa-heart"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->likes_count }}</p>
                                         </div>
                                         <div class="info__comment m-2" title="Comentarios">
                                             <i class="far fa-comment"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->comments_count }}</p>
                                         </div>
                                         <div class="info__comment m-2" title="Personas Requeridas">
                                             <i class="far fa-users"></i>
-                                            <p>3</p>
+                                            <p>{{ $activity->person_required }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -96,42 +96,6 @@
                     </div>
                 </div>
             @endif
-        </div>
-        <div class="instagrams">
-            <div class="instagrams-container"><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/1.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/2.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/3.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/4.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/5.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/1.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/3.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a><a class="instagrams-item" href="https://www.instagram.com/"><img src="images/instagram/4.png" alt="Instagram image" />
-                    <div class="instagrams-item__content"><i class="fab fa-instagram"></i>
-                        <p>@ Gtute_News</p>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </div>

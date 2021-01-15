@@ -10,9 +10,18 @@ class WebController extends Controller
 {
     public function index(Request $request)
     {
-        $activities = Activity::with('district')->with(['resource' => function ($query) {
+        $activities = Activity::with('district')
+        ->with(['resource' => function ($query) {
             $query->where('type_resource_id', 2);
-        }])->where('status', 1)->orderByDesc('created_at')->paginate(18);
+        }])
+        ->withCount(['likes' => function ($query) {
+            $query->where('comment', null);
+        }])
+        ->withCount(['comments' => function ($query) {
+            $query->where('comment', '!=', '');
+        }])
+        ->where('status', 1)->orderByDesc('created_at')->paginate(18);
+
 
         if(isset($request->search)){
 
@@ -32,9 +41,18 @@ class WebController extends Controller
 
     public function activity($name)
     {
-        $activity = Activity::with('district')->with(['resource' => function ($query) {
+        $activity = Activity::with('district')
+        ->with(['resource' => function ($query) {
             $query->where('type_resource_id', 2);
         }])
+        ->withCount(['likes' => function ($query) {
+            $query->where('comment', null);
+        }])
+        ->withCount(['comments' => function ($query) {
+            $query->where('comment', '!=', '');
+        }])
+        ->with('tags')
+        ->with('reward')
         ->where('title', $name)
         ->where('status', 1)
         ->orderByDesc('created_at')

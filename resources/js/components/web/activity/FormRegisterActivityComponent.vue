@@ -61,6 +61,10 @@
                     <input v-model.trim="activity.maps" type="url" v-has-error="'url_address'" name="url_address" class="form-control"
                     placeholder="Ingrese url de google maps">
                 </div>
+                <div class="col-md-12 mt-2">
+                    <label>Monto de Recompensa: (Monto en Soles)</label>
+                    <input v-model.trim="activity.amount" type="number" v-has-error="'amount'" name="amount" class="form-control">
+                </div>
                 <div class="col-md-12">
                     <p class="mt-2">
                         <b>Nota:</b> Peso máximo por imagen es 1024kb = 1MB <br>
@@ -89,6 +93,7 @@ export default {
             address: '',
             maps: '',
             tag: '',
+            amount: 0,
         },
         tags: [],
         districts: [],
@@ -142,6 +147,7 @@ export default {
             this.activity.address = ''
             this.activity.maps = ''
             this.activity.tag = ''
+            this.activity.amount = 0
             this.tags = []
         },
         addTag(){

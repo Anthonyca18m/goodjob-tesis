@@ -31,6 +31,10 @@ class ActivitySeeder extends Seeder
             'type_resource_id' => 2,
             'resource' => 'https://cdne.diariocorreo.pe/redactor/uploads/2019/07/31/lima-calle.jpg',
         ]);
+        $activity->reward()->create([
+            'type_reward_id' => 1,
+            'reward' => 1000
+        ]);
 
 
 
@@ -51,6 +55,10 @@ class ActivitySeeder extends Seeder
             'type_resource_id' => 2,
             'resource' => 'https://cuestionessociales.files.wordpress.com/2011/10/basura33.jpg',
         ]);
+        $activity->reward()->create([
+            'type_reward_id' => 1,
+            'reward' => 1000
+        ]);
 
 
         $activity = Activity::create([
@@ -69,6 +77,10 @@ class ActivitySeeder extends Seeder
         $activity->resource()->create([
             'type_resource_id' => 2,
             'resource' => 'https://e.rpp-noticias.io/normal/2018/11/15/portada_401540.jpg',
+        ]);
+        $activity->reward()->create([
+            'type_reward_id' => 1,
+            'reward' => 1000
         ]);
 
 
@@ -89,6 +101,10 @@ class ActivitySeeder extends Seeder
             'type_resource_id' => 2,
             'resource' => 'https://diariouno.pe/wp-content/uploads/2018/06/40-1.jpg',
         ]);
+        $activity->reward()->create([
+            'type_reward_id' => 1,
+            'reward' => 1000
+        ]);
 
         $activity = Activity::create([
             'user_id' => 2,
@@ -106,6 +122,10 @@ class ActivitySeeder extends Seeder
         $activity->resource()->create([
             'type_resource_id' => 2,
             'resource' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrvXX35FlIr94SQRR3yTyVJc9Pwy7F0zWhJQ&usqp=CAU',
+        ]);
+        $activity->reward()->create([
+            'type_reward_id' => 1,
+            'reward' => 1000
         ]);
 
     }

@@ -28,6 +28,7 @@ class ActivityController extends Controller
             'district' => 'required',
             'address' => 'required',
             'url_address' => 'required|url',
+            'amount' => 'required|numeric|between:10,999999',
 
         ]);
 
@@ -57,6 +58,11 @@ class ActivityController extends Controller
                 $activity->resource()->create([
                     'type_resource_id' => 2,
                     'resource' => getenv('APP_URL') . '/storage/activities/' . $file,
+                ]);
+
+                $activity->reward()->create([
+                    'type_reward_id' => 1,
+                    'reward' => $request->amount
                 ]);
 
                 $tags = explode(',', $request->tags);
