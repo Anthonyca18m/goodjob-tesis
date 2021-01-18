@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class PostulationController extends Controller
 {
-    //
-
     public function store(Request $request)
     {
         $validate = $this->validate($request, [
@@ -30,5 +28,11 @@ class PostulationController extends Controller
                 return 1;
             }
         }
+    }
+
+    public function destroy($id)
+    {
+        $data = Postulation::find($id);
+        $data->delete();
     }
 }

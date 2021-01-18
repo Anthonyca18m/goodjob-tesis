@@ -65,7 +65,19 @@ class WebController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        $postulations = Postulation::where('user_id', $user->id)->get();
+        $postulations = Postulation::where('user_id', $user->id)->orderByDesc('updated_at')->get();
+        $id_postulations = [];
+        foreach ($postulations as $rs) {
+            array_push($id_postulations, $rs->activity_id);
+        }
+
+        $postulations = Activity::with(['resource' => function ($query) {
+            $query->where('type_resource_id', 2);
+        }])
+        ->with(['postulants' => function ($query) use($user) {
+            $query->where('user_id', $user->id);
+        }])
+        ->whereIn('id', $id_postulations)->paginate(5);
 
         return view('profile')
             ->with('postulations', $postulations)
