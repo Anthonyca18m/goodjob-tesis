@@ -9,10 +9,10 @@
     <div class="container-full p-3">
         <div class="row justify-content-center">
 
-            @if (Auth::check())
-                <div class="col-md-7 p-4">
+            @if (Request::query('q') == 'postulations')
+                <div class="col-md-7">
                     @foreach ($postulations as $postulation)
-                        <div class="card m-2">
+                        <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $postulation->activity->title }}</h5>
                                 <p>
@@ -33,10 +33,20 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="col-md-3 p-4">
-                    @include('layouts.sidebar_right')
+            @endif
+            @if (Request::query('q') == 'profile')
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <form-profile-client-component :user="{{ $user }}"></form-profile-client-component>
+                        </div>
+                    </div>
                 </div>
             @endif
+
+            <div class="col-md-3">
+                @include('layouts.sidebar_right')
+            </div>
         </div>
     </div>
 </div>

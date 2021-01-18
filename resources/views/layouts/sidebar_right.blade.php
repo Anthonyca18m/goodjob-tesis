@@ -15,7 +15,11 @@
                         @endif
                     </div>
                     <tr>
-                        <th><i class="fad fa-user-circle"></i> Mi perfil</th>
+                        <th>
+                            <a class="text-dark text-decoration-none" href="{{ route('profile', ['q' => 'profile']) }}">
+                                <i class="fad fa-user-circle"></i> Mi perfil
+                            </a>
+                        </th>
                     </tr>
                     @if ($user->account_type_id == 1)
                     <tr>
@@ -28,7 +32,11 @@
                     @endif
                     @if ($user->account_type_id == 2)
                     <tr>
-                        <th><i class="fad fa-th-list"></i> Mis actividades</th>
+                        <th>
+                            <a class="text-dark text-decoration-none" href="{{ route('profile', ['q' => 'activities']) }}">
+                                <i class="fad fa-th-list"></i> Mis actividades
+                            </a>
+                        </th>
                     </tr>
                     @endif
                     <tr>

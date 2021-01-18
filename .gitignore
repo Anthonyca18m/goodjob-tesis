@@ -1,4 +1,4 @@
-
+.cache
 .env.backup
 .phpunit.result.cache
 Homestead.json
