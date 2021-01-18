@@ -35,7 +35,6 @@ Route::group(['prefix' => 'web/'], function() {
     Route::post('comment/register',                     'API\CommentController@store');
     Route::get('comment/activity/list',                 'API\CommentController@getComments');
 
-
     Route::get('ubigeo/department',                     'API\UbigeoController@getDepartments');
     Route::get('ubigeo/province/{department_id}',       'API\UbigeoController@getProvinces');
     Route::get('ubigeo/district/{province_id}',         'API\UbigeoController@getDistricts');

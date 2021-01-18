@@ -52,6 +52,39 @@
                     </div>
                 </div>
             @endif
+            @if (Request::query('q') == 'activities')
+                <div class="col-md-7">
+                    <h2 class="text-center bg-light rounded mb-3 p-3 border-bottom">Mis actividades publicadas</h2>
+                    @foreach ($my_activities as $activity)
+                        <div class="card m-1">
+                            <div class="card-body">
+                                <img src="{{ $activity->resource[0]->resource }}" width="150" class="img-fluid float-left mr-2">
+                                <div class="float-left">
+                                    <h5>{{ $activity->title }}</h5>
+                                    Estado:
+                                    @switch($activity->status)
+                                        @case(1)
+                                            <a class="btn btn-sm btn-success text-white">Activo</a>
+                                            @break
+                                        @case(0)
+                                            <a class="btn btn-sm btn-info text-white">Terminado</a>
+                                            @break
+                                    @endswitch
+                                </div>
+                                <p class="float-right">Fecha de Registro : <b>{{ $activity->created_at->format('H:i:s a d/m/Y') }}</b></p>
+                            </div>
+                            <div class="card-footer p-1">
+                                <button class="btn btn-primary btn-sm float-right m-1">Editar Información</button>
+                                <button class="btn btn-primary btn-sm float-right m-1">Agregar Imagen</button>
+                                <button class="btn btn-primary btn-sm float-right m-1">Agregar Video</button>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="row justify-content-center">
+                        <div>{{ $my_activities->withQueryString() }}</div>
+                    </div>
+                </div>
+            @endif
 
             <div class="col-md-3">
                 @include('layouts.sidebar_right')

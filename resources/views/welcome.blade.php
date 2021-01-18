@@ -50,7 +50,7 @@
                         @endforelse
                     </div>
                     <div class="row justify-content-center">
-                        <div>{{ $activities->links() }}</div>
+                        <div>{{ $activities->withQueryString() }}</div>
                     </div>
                 </div>
                 <div class="col-md-3 p-4">
@@ -92,7 +92,7 @@
                         @endforelse
                     </div>
                     <div class="row justify-content-center">
-                        <div>{{ $activities->links() }}</div>
+                        <div>{{ $activities->withQueryString() }}</div>
                     </div>
                 </div>
             @endif

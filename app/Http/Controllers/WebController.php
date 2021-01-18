@@ -62,7 +62,7 @@ class WebController extends Controller
             ->with('activity', $activity);
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
         $user = auth()->user();
         $postulations = Postulation::where('user_id', $user->id)->orderByDesc('updated_at')->get();
@@ -79,8 +79,21 @@ class WebController extends Controller
         }])
         ->whereIn('id', $id_postulations)->paginate(5);
 
+        $my_activities = [];
+
+        if($request->q == 'activities'){
+
+            $my_activities = Activity::with(['resource' => function ($query) {
+                $query->where('type_resource_id', 2);
+            }])
+            ->where('user_id', $user->id)
+            ->orderByDesc('activities.created_at')
+            ->paginate(5);
+        }
+
         return view('profile')
             ->with('postulations', $postulations)
+            ->with('my_activities', $my_activities)
             ;
     }
 }
