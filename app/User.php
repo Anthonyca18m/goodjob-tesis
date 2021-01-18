@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
     public function accountBanks()
     {
-        return $this->hasMany(Models\AcoountBank::class);
+        return $this->hasMany(Models\AccountBank::class);
     }
 
 

@@ -9,44 +9,19 @@ use Illuminate\Support\Facades\DB;
 class UbigeoController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
-
     public function getDistricts($province_id)
     {
         return DB::table('districts')->where('province_id', $province_id)->get();
+    }
+
+    public function getDepartments()
+    {
+        return DB::table('departments')->get();
+    }
+
+    public function getProvinces($deparment_id)
+    {
+        return DB::table('provinces')->where('department_id', $deparment_id)->get();
     }
 
 

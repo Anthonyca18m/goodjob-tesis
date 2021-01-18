@@ -20,7 +20,7 @@ class AccountBank extends Model
 
     public function bank()
     {
-        return $this->hasOne(Bank::class);
+        return $this->hasOne(Bank::class, 'id', 'bank_id');
     }
 }
 

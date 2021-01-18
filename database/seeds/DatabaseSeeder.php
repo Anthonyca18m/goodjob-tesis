@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TypeRewardSeeder::class,
             ActivitySeeder::class,
+            BankSeeder::class,
         ]);
     }
 }

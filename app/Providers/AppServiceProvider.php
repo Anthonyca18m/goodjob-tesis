@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
 
-            $view->with('user', User::with(['profile', 'image'])->find(Auth::user()->id ?? null));
+            $view->with('user', User::with(['profile', 'image', 'accountBanks'])->find(Auth::user()->id ?? null));
         });
 
         view()->composer('layouts.footer', function ($view) {

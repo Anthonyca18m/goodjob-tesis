@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'web/'], function() {
 
     Route::post('client/register',                      'API\ClientController@store');
+    Route::post('client/profile/update',                'API\ClientController@update');
+    Route::post('client/profile/img',                   'API\ClientController@updateImg');
 
 
     Route::post('activity/register',                    'API\ActivityController@store');
@@ -33,6 +35,15 @@ Route::group(['prefix' => 'web/'], function() {
     Route::get('comment/activity/list',                 'API\CommentController@getComments');
 
 
+    Route::get('ubigeo/department',                     'API\UbigeoController@getDepartments');
+    Route::get('ubigeo/province/{department_id}',       'API\UbigeoController@getProvinces');
     Route::get('ubigeo/district/{province_id}',         'API\UbigeoController@getDistricts');
+
+    Route::get('bank/list',                             'API\BankController@index');
+    Route::post('bank/register',                        'API\BankController@store');
+
+    Route::get('bank/number/user/{user_id}',            'API\BankController@show');
+    Route::delete('bank/user/delete/{id}',              'API\BankController@destroy');
+    Route::get('bank/user/update/{id}',                 'API\BankController@updateStatus');
 
 });
