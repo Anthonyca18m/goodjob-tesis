@@ -28,10 +28,11 @@
     <script>
         window.user_logeo = @json(auth()->user());
     </script>
+    <script sync rel="script/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 
     <script sync src="{{ asset('js/app.js') }}"></script>
 
-    <script sync rel="script/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+
     <script sync rel="script/javascript" src="{{ asset('js/slick.min.js') }}"></script>
     <script sync rel="script/javascript" src="{{ asset('js/plyr.min.js') }}"></script>
     <script sync rel="script/javascript" src="{{ asset('js/masonry.pkgd.min.js') }}"></script>

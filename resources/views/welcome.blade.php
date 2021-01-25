@@ -96,9 +96,11 @@
                     </div>
                 </div>
             @endif
+            
         </div>
     </div>
 </div>
+
 
 @include('layouts.footer')
 
