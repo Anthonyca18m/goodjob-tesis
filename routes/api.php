@@ -27,10 +27,13 @@ Route::group(['prefix' => 'web/'], function() {
 
 
     Route::post('activity/register',                    'API\ActivityController@store');
-
+    Route::get('activity/postulants/{activity_id}',     'API\ActivityController@getPostulants');
 
     Route::post('postulation/register',                 'API\PostulationController@store');
     Route::delete('postulantion/delete/{id}',           'API\PostulationController@destroy');
+
+    Route::post('postulation/accept',                   'API\PostulationController@accept');
+    Route::post('postulation/denied',                   'API\PostulationController@denied');
 
     Route::post('comment/register',                     'API\CommentController@store');
     Route::get('comment/activity/list',                 'API\CommentController@getComments');

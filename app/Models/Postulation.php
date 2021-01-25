@@ -20,5 +20,10 @@ class Postulation extends Model
     {
         return $this->hasOne(Activity::class, 'id', 'activity_id');
     }
-    
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id', 'user_id');
+    }
+
 }

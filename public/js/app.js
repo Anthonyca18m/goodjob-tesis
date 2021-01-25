@@ -2734,6 +2734,123 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'btn-manage-postulants-component',
+  props: ['activity_id'],
+  data: function data() {
+    return {
+      postulants: [],
+      status: 2
+    };
+  },
+  methods: {
+    getPostulants: function getPostulants() {
+      var _this = this;
+
+      axios.get("api/web/activity/postulants/".concat(this.activity_id), {
+        params: {
+          status: this.status
+        }
+      }).then(function (_ref) {
+        var data = _ref.data;
+        _this.postulants = data;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    accept: function accept(postulant) {
+      var _this2 = this;
+
+      axios.post('api/web/postulation/accept', postulant).then(function (result) {
+        _this2.getPostulants();
+
+        Swal.fire('Aceptado!', 'Se ha notificado al usuario que ha sido aceptado a la actividad.', 'success');
+      })["catch"](function (err) {
+        Swal.fire('Oops!', 'Ha ocurrido algo inesperado!', 'error');
+        console.log(err);
+      });
+    },
+    denied: function denied(postulant) {
+      var _this3 = this;
+
+      axios.post('api/web/postulation/denied', postulant).then(function (result) {
+        _this3.getPostulants();
+
+        Swal.fire('Rechazado!', 'Se ha notificado al usuario que ha sido rechazado a la actividad.', 'success');
+      })["catch"](function (err) {
+        Swal.fire('Oops!', 'Ha ocurrido algo inesperado!', 'error');
+        console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=script&lang=js& ***!
@@ -66732,6 +66849,242 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary btn-sm float-right m-1",
+        attrs: {
+          "data-toggle": "modal",
+          "data-target": "#modalGPActivity" + _vm.activity_id
+        },
+        on: { click: _vm.getPostulants }
+      },
+      [_vm._v("Gestionar Postulantes")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "modalGPActivity" + _vm.activity_id,
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "d-flex mb-3" }, [
+                  _c("label", [_vm._v("Lista de Postulantes: ")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.status,
+                          expression: "status"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.status = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.getPostulants
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("En espera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Aceptados")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Rechazados")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("table", { staticClass: "table table-hover" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      _vm._l(_vm.postulants, function(postulant, index) {
+                        return _c("tr", { key: index }, [
+                          _c("td", [_vm._v(_vm._s(postulant.profile.name))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("mydate_messages")(postulant.created_at)
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          postulant.status == 2
+                            ? _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn border btn-light btn-sm",
+                                    attrs: { title: "Aceptar Postulante" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.accept(postulant)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Aceptar")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: { title: "Rechazar Postulante" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.denied(postulant)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Rechazar")]
+                                )
+                              ])
+                            : _c("td", [
+                                postulant.status == 1
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "btn btn-success" },
+                                      [_vm._v("Aceptado")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                postulant.status == 0
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "btn btn-danger" },
+                                      [_vm._v("Rechazado")]
+                                    )
+                                  : _vm._e()
+                              ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _vm.postulants.length <= 0
+                        ? _c("tr", [
+                            _c(
+                              "td",
+                              {
+                                staticClass: "text-center",
+                                attrs: { colspan: "4" }
+                              },
+                              [_vm._v("No hay registros disponibles")]
+                            )
+                          ])
+                        : _vm._e()
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header text-center" }, [
+      _c("h5", { staticClass: "modal-title" }, [
+        _vm._v("Gestionar Postulantes")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v(" Nombre Completo ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Fecha de Postulación ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v(" Acciones ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c&":
 /*!***********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnPostulationActivityComponent.vue?vue&type=template&id=d813839c& ***!
@@ -81791,6 +82144,7 @@ var map = {
 	"./components/passport/AuthorizedClients.vue": "./resources/js/components/passport/AuthorizedClients.vue",
 	"./components/passport/Clients.vue": "./resources/js/components/passport/Clients.vue",
 	"./components/passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue",
+	"./components/web/activity/BtnManagePostulantsComponent.vue": "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue",
 	"./components/web/activity/BtnPostulationActivityComponent.vue": "./resources/js/components/web/activity/BtnPostulationActivityComponent.vue",
 	"./components/web/activity/CommentsActivityComponent.vue": "./resources/js/components/web/activity/CommentsActivityComponent.vue",
 	"./components/web/activity/FormRegisterActivityComponent.vue": "./resources/js/components/web/activity/FormRegisterActivityComponent.vue",
@@ -82185,6 +82539,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnManagePostulantsComponent.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63& */ "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63&");
+/* harmony import */ var _BtnManagePostulantsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BtnManagePostulantsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BtnManagePostulantsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/web/activity/BtnManagePostulantsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnManagePostulantsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnManagePostulantsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnManagePostulantsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnManagePostulantsComponent.vue?vue&type=template&id=0c529c63&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnManagePostulantsComponent_vue_vue_type_template_id_0c529c63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

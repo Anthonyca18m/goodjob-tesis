@@ -79,7 +79,8 @@
                                 <button class="btn btn-primary btn-sm float-left m-1">Agregar Video</button>
 
                                 <button class="btn btn-danger btn-sm float-right m-1">Eliminar</button>
-                                <button class="btn btn-primary btn-sm float-right m-1">Gestionar Postulantes</button>
+                                <btn-manage-postulants-component :activity_id="{{ $activity->id }}"></btn-manage-postulants-component>
+
                             </div>
                         </div>
                     @endforeach

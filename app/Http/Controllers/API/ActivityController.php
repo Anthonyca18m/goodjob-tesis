@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Postulation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -76,4 +77,10 @@ class ActivityController extends Controller
             });
         }
     }
+
+    public function getPostulants(Request $request, $activity_id){
+
+        return Postulation::with('profile')->where('activity_id', $activity_id)->where('status', $request->status)->get();
+    }
+
 }
