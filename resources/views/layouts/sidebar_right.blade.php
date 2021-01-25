@@ -39,6 +39,15 @@
                         </th>
                     </tr>
                     @endif
+                    @if ($user->account_type_id == 3)
+                    <tr>
+                        <th>
+                            <a class="text-dark text-decoration-none" href="{{ route('profile', ['q' => 'administrator']) }}">
+                                <i class="fad fa-th-list"></i> Panel de Administración
+                            </a>
+                        </th>
+                    </tr>
+                    @endif
                     <tr>
                         <th onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fad fa-sign-out-alt"></i> Cerrar Sesión

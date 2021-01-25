@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     {
         $client = User::create([
             'account_type_id' => 1,
-            'email' => 'user@goodjob.com',
+            'email' => 'user@goodjoblatam.com',
             'password' => Hash::make('password'),
             'register' => 'web',
             'status' => 1 // 1:activo 0: inactivo 3: en espera
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
 
         $client = User::create([
             'account_type_id' => 2,
-            'email' => 'company@goodjob.com',
+            'email' => 'company@goodjoblatam.com',
             'password' => Hash::make('password'),
             'register' => 'web',
             'status' => 1 // 1:activo 0: inactivo 3: en espera

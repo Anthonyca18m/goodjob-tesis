@@ -7,11 +7,11 @@
                         <div class="center-line-title">
                             <h5>Sobre Nosotros</h5>
                         </div>
-                        <p>Este proyecto tiene como objetivo mejorar la calidad de medio ambiente en Lima - Perú</p>
+                        <p>Este proyecto tiene como objetivo mejorar la calidad del medio ambiente en Lima Metropolitana - Perú</p>
                         <div class="contact-method">
                             <p> <i class="fas fa-map-marker-alt"></i>Av Tesis con IDAT - a lado de UTP</p>
-                            <p> <i class="far fa-mobile-android"></i>911 111 111 - 922 222 222</p>
-                            <p> <i class="fas fa-headphones-alt"></i>developer@goodjob.com</p>
+                            <p> <i class="far fa-mobile-android"></i>999 999 999 - 999 999 999</p>
+                            <p> <i class="fas fa-headphones-alt"></i>developer@goodjoblatam.com</p>
                         </div>
                     </div>
                 </div>

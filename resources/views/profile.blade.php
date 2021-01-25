@@ -74,9 +74,12 @@
                                 <p class="float-right">Fecha de Registro : <b>{{ $activity->created_at->format('H:i:s a d/m/Y') }}</b></p>
                             </div>
                             <div class="card-footer p-1">
-                                <button class="btn btn-primary btn-sm float-right m-1">Editar Información</button>
-                                <button class="btn btn-primary btn-sm float-right m-1">Agregar Imagen</button>
-                                <button class="btn btn-primary btn-sm float-right m-1">Agregar Video</button>
+                                <button class="btn btn-primary btn-sm float-left m-1">Editar Información</button>
+                                <button class="btn btn-primary btn-sm float-left m-1">Agregar Imagen</button>
+                                <button class="btn btn-primary btn-sm float-left m-1">Agregar Video</button>
+
+                                <button class="btn btn-danger btn-sm float-right m-1">Eliminar</button>
+                                <button class="btn btn-primary btn-sm float-right m-1">Gestionar Postulantes</button>
                             </div>
                         </div>
                     @endforeach

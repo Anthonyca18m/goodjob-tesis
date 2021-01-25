@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="header-wrapper"><a class="header__logo" href="{{ route('web') }}"><img src="http://127.0.0.1:8000/storage/logogb.png" alt="Logo"/></a>
+      <div class="header-wrapper"><a class="header__logo" href="{{ route('web') }}"><img src="https://www.goodjoblatam.com/storage/logogb.png" alt="Logo"/></a>
         <nav class="mt-3">
           <ul>
             <li class="nav-item active"><a href="{{ route('web') }}">Inicio</a>
