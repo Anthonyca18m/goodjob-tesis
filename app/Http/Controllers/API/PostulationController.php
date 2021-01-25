@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostulationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function store(Request $request)
     {
         $validate = $this->validate($request, [

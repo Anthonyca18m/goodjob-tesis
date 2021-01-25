@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class UbigeoController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+    
     public function getDistricts($province_id)
     {
         return DB::table('districts')->where('province_id', $province_id)->get();
