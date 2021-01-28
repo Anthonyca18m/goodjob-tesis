@@ -95,7 +95,7 @@ export default {
     methods: {
         register(){
             const formData = new FormData(event.target)
-            axios.post('api/web/client/register', formData)
+            axios.post('api/web/client/store', formData)
                 .then(({data}) => {
                     this.clearInputs()
                     this.type_document = ''

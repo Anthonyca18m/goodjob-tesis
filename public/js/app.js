@@ -2877,7 +2877,7 @@ __webpack_require__.r(__webpack_exports__);
       var form = new FormData();
       form.append('user_id', user_logeo.id);
       form.append('activity_id', this.activity_id);
-      axios.post('api/web/postulation/register', form).then(function (_ref) {
+      axios.post('api/web/postulation/store', form).then(function (_ref) {
         var data = _ref.data;
 
         if (data == 1) {
@@ -2969,7 +2969,7 @@ __webpack_require__.r(__webpack_exports__);
       form.append('comment', this.comment);
       form.append('user_id', user_logeo.id);
       form.append('activity_id', this.activity_id);
-      axios.post('api/web/comment/register', form).then(function (_ref2) {
+      axios.post('api/web/comment/store', form).then(function (_ref2) {
         var data = _ref2.data;
         _this2.comment = '';
 
@@ -3098,7 +3098,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var formData = new FormData(event.target);
-      axios.post('api/web/activity/register', formData).then(function (_ref) {
+      axios.post('api/web/activity/store', formData).then(function (_ref) {
         var data = _ref.data;
 
         _this.clear();
@@ -3581,7 +3581,7 @@ __webpack_require__.r(__webpack_exports__);
     addNumberBank: function addNumberBank() {
       var _this4 = this;
 
-      axios.post('api/web/bank/register', this.payment).then(function () {
+      axios.post('api/web/bank/store', this.payment).then(function () {
         _this4.payment.number_bank = '';
         _this4.payment.number_ibank = '';
         _this4.payment.bank = '';
@@ -3816,7 +3816,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var formData = new FormData(event.target);
-      axios.post('api/web/client/register', formData).then(function (_ref) {
+      axios.post('api/web/client/store', formData).then(function (_ref) {
         var data = _ref.data;
 
         _this.clearInputs();

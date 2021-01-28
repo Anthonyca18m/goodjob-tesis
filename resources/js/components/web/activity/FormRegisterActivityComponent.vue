@@ -101,7 +101,7 @@ export default {
     methods: {
         save(){
             let formData = new FormData(event.target)
-            axios.post('api/web/activity/register', formData)
+            axios.post('api/web/activity/store', formData)
                 .then(({data}) => {
                     this.clear()
                     Swal.fire({

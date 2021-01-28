@@ -61,7 +61,7 @@ export default {
             form.append('user_id', user_logeo.id)
             form.append('activity_id', this.activity_id)
 
-            axios.post('api/web/comment/register', form)
+            axios.post('api/web/comment/store', form)
                 .then(({data}) => {
                     this.comment = ''
                     this.getComments()

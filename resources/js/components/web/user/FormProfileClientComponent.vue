@@ -355,7 +355,7 @@ export default {
             this.errors = []
         },
         addNumberBank(){
-            axios.post('api/web/bank/register', this.payment)
+            axios.post('api/web/bank/store', this.payment)
             .then(() => {
                 this.payment.number_bank = ''
                 this.payment.number_ibank = ''

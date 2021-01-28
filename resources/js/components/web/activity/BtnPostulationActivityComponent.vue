@@ -17,7 +17,7 @@ export default {
             form.append('user_id', user_logeo.id)
             form.append('activity_id', this.activity_id)
 
-            axios.post('api/web/postulation/register', form)
+            axios.post('api/web/postulation/store', form)
                 .then(({data}) => {
                     if(data == 1){
                         Swal.fire(  'Ya postulaste',  'Solo se puede postular una sola vez por actividad!.',  'info')
