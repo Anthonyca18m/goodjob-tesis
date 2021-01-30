@@ -11,6 +11,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\API\\ActivityController' => $baseDir . '/app/Http/Controllers/API/ActivityController.php',
+    'App\\Http\\Controllers\\API\\BankController' => $baseDir . '/app/Http/Controllers/API/BankController.php',
     'App\\Http\\Controllers\\API\\ClientController' => $baseDir . '/app/Http/Controllers/API/ClientController.php',
     'App\\Http\\Controllers\\API\\CommentController' => $baseDir . '/app/Http/Controllers/API/CommentController.php',
     'App\\Http\\Controllers\\API\\PostulationController' => $baseDir . '/app/Http/Controllers/API/PostulationController.php',

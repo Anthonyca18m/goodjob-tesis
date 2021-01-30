@@ -598,6 +598,7 @@ class ComposerStaticInitbbc53c1f03b8bd6634fa0ea4c2043ecc
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\ActivityController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ActivityController.php',
+        'App\\Http\\Controllers\\API\\BankController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/BankController.php',
         'App\\Http\\Controllers\\API\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ClientController.php',
         'App\\Http\\Controllers\\API\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CommentController.php',
         'App\\Http\\Controllers\\API\\PostulationController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/PostulationController.php',
