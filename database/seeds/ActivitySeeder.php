@@ -23,7 +23,7 @@ class ActivitySeeder extends Seeder
             'person_required' => 10,
             'address' => Str::random(150),
             'address_reference' => 'https://www.google.com.pe/maps/@-12.0630149,-77.0296179,13z?hl=es-419',
-            'ubigeo' => '160105',
+            'ubigeo' => '150105',
             'country' => 'PE',
             'status' => 1
         ]);
@@ -47,7 +47,7 @@ class ActivitySeeder extends Seeder
             'person_required' => 10,
             'address' => Str::random(150),
             'address_reference' => 'https://www.google.com.pe/maps/@-12.0630149,-77.0296179,13z?hl=es-419',
-            'ubigeo' => '160105',
+            'ubigeo' => '150105',
             'country' => 'PE',
             'status' => 1
         ]);
@@ -70,7 +70,7 @@ class ActivitySeeder extends Seeder
             'person_required' => 10,
             'address' => Str::random(150),
             'address_reference' => 'https://www.google.com.pe/maps/@-12.0630149,-77.0296179,13z?hl=es-419',
-            'ubigeo' => '160105',
+            'ubigeo' => '150105',
             'country' => 'PE',
             'status' => 1
         ]);
@@ -93,7 +93,7 @@ class ActivitySeeder extends Seeder
             'person_required' => 10,
             'address' => Str::random(150),
             'address_reference' => 'https://www.google.com.pe/maps/@-12.0630149,-77.0296179,13z?hl=es-419',
-            'ubigeo' => '160105',
+            'ubigeo' => '150105',
             'country' => 'PE',
             'status' => 1
         ]);
@@ -115,7 +115,7 @@ class ActivitySeeder extends Seeder
             'person_required' => 10,
             'address' => Str::random(150),
             'address_reference' => 'https://www.google.com.pe/maps/@-12.0630149,-77.0296179,13z?hl=es-419',
-            'ubigeo' => '160105',
+            'ubigeo' => '150105',
             'country' => 'PE',
             'status' => 1
         ]);

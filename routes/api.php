@@ -27,7 +27,11 @@ Route::group(['prefix' => 'web/'], function() {
 
 
     Route::post('activity/store',                       'API\ActivityController@store');
+    Route::post('activity/update',                      'API\ActivityController@update');
     Route::get('activity/postulants/{activity_id}',     'API\ActivityController@getPostulants');
+    Route::delete('activity/destroy/{activity_id}',     'API\ActivityController@destroy');
+    Route::get('activity/show/{activity_id}',           'API\ActivityController@show');
+
 
     Route::post('postulation/store',                    'API\PostulationController@store');
     Route::delete('postulantion/delete/{id}',           'API\PostulationController@destroy');

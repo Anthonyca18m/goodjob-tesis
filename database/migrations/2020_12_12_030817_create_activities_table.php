@@ -18,8 +18,8 @@ class CreateActivitiesTable extends Migration
 
             $table->text('title');
             $table->longText('description');
-            $table->string('date_init');
-            $table->string('date_end');
+            $table->date('date_init');
+            $table->date('date_end');
             $table->integer('person_required');
 
             $table->string('address');

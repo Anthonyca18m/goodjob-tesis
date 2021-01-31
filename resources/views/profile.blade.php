@@ -57,9 +57,9 @@
                     <h2 class="text-center bg-light rounded mb-3 p-3 border-bottom">Mis actividades publicadas</h2>
                     @foreach ($my_activities as $activity)
                         <div class="card m-1">
-                            <div class="card-body">
+                            <div class="card-body d-flex">
                                 <img src="{{ $activity->resource[0]->resource }}" width="150" class="img-fluid float-left mr-2">
-                                <div class="float-left">
+                                <div>
                                     <h5>{{ $activity->title }}</h5>
                                     Estado:
                                     @switch($activity->status)
@@ -70,15 +70,25 @@
                                             <a class="btn btn-sm btn-info text-white">Terminado</a>
                                             @break
                                     @endswitch
+                                    <table class="m-2">
+                                        <tbody>
+                                            <tr>
+                                                <td><b>Fecha de Inicio: </b><br> {{ $activity->date_init }}</td>
+                                                <td><b>Hasta: </b> <br>{{ $activity->date_end }}</td>
+                                                <td><b>Personas Requeridas: </b> <br>{{ $activity->person_required }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <p class="float-right">Fecha de Registro : <b>{{ $activity->created_at->format('H:i:s a d/m/Y') }}</b></p>
+                                <p class="text-right">Fecha de Registro : <b>{{ $activity->created_at->format('H:i:s a d/m/Y') }}</b></p>
+
                             </div>
                             <div class="card-footer p-1">
-                                <button class="btn btn-primary btn-sm float-left m-1">Editar Información</button>
+                                <btn-edit-activity-component :activity_id="{{ $activity->id }}"></btn-edit-activity-component>
                                 <button class="btn btn-primary btn-sm float-left m-1">Agregar Imagen</button>
                                 <button class="btn btn-primary btn-sm float-left m-1">Agregar Video</button>
 
-                                <button class="btn btn-danger btn-sm float-right m-1">Eliminar</button>
+                                <btn-destroy-activity-component :activity_id="{{ $activity->id }}"></btn-destroy-activity-component>
                                 <btn-manage-postulants-component :activity_id="{{ $activity->id }}"></btn-manage-postulants-component>
 
                             </div>
