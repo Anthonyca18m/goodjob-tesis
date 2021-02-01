@@ -68230,7 +68230,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "datetime-local", name: "date_init" },
+                attrs: { type: "date", name: "date_init" },
                 domProps: { value: _vm.activity.date_init },
                 on: {
                   input: function($event) {
@@ -68270,7 +68270,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "datetime-local", name: "date_end" },
+                attrs: { type: "date", name: "date_end" },
                 domProps: { value: _vm.activity.date_end },
                 on: {
                   input: function($event) {

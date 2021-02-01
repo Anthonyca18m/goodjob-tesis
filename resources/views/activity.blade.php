@@ -45,10 +45,10 @@
                         </div>
                         <div class="mt-3">
                             <p class="float-left">
-                                <b>Fecha de Inicio de Actividad: </b> {{ $activity->created_at->format('H:m:i a d/m/Y') }}
+                                <b>Fecha de Inicio de Actividad: </b> {{ $activity->date_init }}
                             </p>
                             <p class="float-right">
-                                <b>Fecha de Fin de Actividad: </b> {{ $activity->created_at->format('H:m:i a d/m/Y') }}
+                                <b>Fecha de Fin de Actividad: </b> {{ $activity->date_end }}
                             </p>
                         </div>
                         <div class="col-md-12">

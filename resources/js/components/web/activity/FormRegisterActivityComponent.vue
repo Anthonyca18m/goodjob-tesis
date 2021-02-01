@@ -31,11 +31,11 @@
                 </div>
                 <div class="col-md-4">
                     <label>Fecha de Inicio:</label>
-                    <input v-model.trim="activity.date_init" type="datetime-local" v-has-error="'date_init'" name="date_init" class="form-control">
+                    <input v-model.trim="activity.date_init" type="date" v-has-error="'date_init'" name="date_init" class="form-control">
                 </div>
                 <div class="col-md-4">
                     <label>Fecha de Fin:</label>
-                    <input v-model.trim="activity.date_end" type="datetime-local" v-has-error="'date_end'" name="date_end" class="form-control">
+                    <input v-model.trim="activity.date_end" type="date" v-has-error="'date_end'" name="date_end" class="form-control">
                 </div>
                 <div class="col-md-4">
                     <label>N° personas requeridas:</label>
