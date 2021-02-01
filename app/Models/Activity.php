@@ -60,4 +60,13 @@ class Activity extends Model
     {
         return $this->morphOne(Reward::class, 'rewardable');
     }
+
+    public function images()
+    {
+        return $this->morphMany(Resource::class, 'resourcegable');
+    }
+    public function videos()
+    {
+        return $this->morphMany(Resource::class, 'resourcegable');
+    }
 }

@@ -19,6 +19,9 @@
                             @foreach ($activity->resource as $resource)
                                 <img class="img-fluid m-1" src="{{ $resource->resource }}" width="100">
                             @endforeach
+                            @foreach ($activity->images as $image)
+                                <img class="img-fluid m-1" src="{{ $image->resource }}" width="100">
+                            @endforeach
                         </div>
                         <div class="d-flex d-inline justify-content-center">
                             <button class="info__comment m-2 pl-3 pr-3 pt-2 rounded border bg-light" title="Me gusta">

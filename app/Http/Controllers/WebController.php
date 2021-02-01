@@ -45,6 +45,12 @@ class WebController extends Controller
         ->with(['resource' => function ($query) {
             $query->where('type_resource_id', 2);
         }])
+        ->with(['images' => function ($query) {
+            $query->where('type_resource_id', 3);
+        }])
+        ->with(['videos' => function ($query) {
+            $query->where('type_resource_id', 4);
+        }])
         ->withCount(['likes' => function ($query) {
             $query->where('comment', null);
         }])
