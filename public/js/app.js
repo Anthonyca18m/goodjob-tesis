@@ -2734,6 +2734,127 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'btn-add-image-activity-component',
+  props: ['activity_id'],
+  data: function data() {
+    return {
+      imgs: []
+    };
+  },
+  methods: {
+    saveImg: function saveImg() {
+      var _this = this;
+
+      var formData = new FormData(event.target);
+      axios.post('api/web/activity/img/store', formData).then(function (_ref) {
+        var data = _ref.data;
+
+        _this.getImgs();
+      })["catch"](function (err) {
+        if (err.response.status == 422) {
+          _this.$setLaravelErrors(err.response.data.errors);
+        }
+      });
+    },
+    getImgs: function getImgs() {
+      var _this2 = this;
+
+      axios.get("api/web/activity/img/list/".concat(this.activity_id)).then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.imgs = data.resource;
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
+    question: function question(id) {
+      var _this3 = this;
+
+      Swal.fire({
+        title: 'Estas seguro?',
+        text: "Esta acción no tiene reversa.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si eliminar!'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this3.destroy(id);
+        }
+      });
+    },
+    destroy: function destroy(id) {
+      var _this4 = this;
+
+      axios["delete"]("api/web/activity/img/delete/".concat(id)).then(function () {
+        Swal.fire('Eliminado!', 'Se ha eliminado el archivo del servidor.', 'success');
+
+        _this4.getImgs();
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnDestroyActivityComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnDestroyActivityComponent.vue?vue&type=script&lang=js& ***!
@@ -67057,6 +67178,216 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary btn-sm float-left m-1",
+        attrs: {
+          "data-toggle": "modal",
+          "data-target": "#ModalAddImgActivity" + _vm.activity_id
+        },
+        on: { click: _vm.getImgs }
+      },
+      [_vm._v("Agregar Imagen")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "ModalAddImgActivity" + _vm.activity_id,
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "post" },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.saveImg($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.activity_id,
+                              expression: "activity_id"
+                            }
+                          ],
+                          attrs: { type: "hidden", name: "id" },
+                          domProps: { value: _vm.activity_id },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.activity_id = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row justify-content-center" },
+                          [
+                            _c("div", { staticClass: "col-md-5" }, [
+                              _c("div", { staticClass: "custom-file" }, [
+                                _c("input", {
+                                  staticClass: "custom-file-input",
+                                  attrs: {
+                                    type: "file",
+                                    name: "image",
+                                    accept: "image/*"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  { staticClass: "custom-file-label" },
+                                  [_vm._v("Subir Imagen")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", {
+                                  directives: [
+                                    {
+                                      name: "has-error",
+                                      rawName: "v-has-error",
+                                      value: "image",
+                                      expression: "'image'"
+                                    }
+                                  ]
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(1)
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-12 d-flex overflow-auto mt-2" },
+                    _vm._l(_vm.imgs, function(img, index) {
+                      return _c(
+                        "figure",
+                        { key: index, staticClass: "m-1 border rounded" },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            attrs: { src: img.resource, width: "300" }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "figcaption",
+                            {
+                              staticClass: "btn btn-danger d-block",
+                              on: {
+                                click: function($event) {
+                                  return _vm.question(img.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Eliminar")]
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Formulario Agregar Imagenes")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Subir")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnDestroyActivityComponent.vue?vue&type=template&id=68cf0ad6&":
 /*!*******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/web/activity/BtnDestroyActivityComponent.vue?vue&type=template&id=68cf0ad6& ***!
@@ -82864,6 +83195,7 @@ var map = {
 	"./components/passport/AuthorizedClients.vue": "./resources/js/components/passport/AuthorizedClients.vue",
 	"./components/passport/Clients.vue": "./resources/js/components/passport/Clients.vue",
 	"./components/passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue",
+	"./components/web/activity/BtnAddImageActivityComponent.vue": "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue",
 	"./components/web/activity/BtnDestroyActivityComponent.vue": "./resources/js/components/web/activity/BtnDestroyActivityComponent.vue",
 	"./components/web/activity/BtnEditActivityComponent.vue": "./resources/js/components/web/activity/BtnEditActivityComponent.vue",
 	"./components/web/activity/BtnManagePostulantsComponent.vue": "./resources/js/components/web/activity/BtnManagePostulantsComponent.vue",
@@ -83261,6 +83593,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalAccessTokens_vue_vue_type_template_id_49962cc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnAddImageActivityComponent.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc& */ "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc&");
+/* harmony import */ var _BtnAddImageActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BtnAddImageActivityComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BtnAddImageActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/web/activity/BtnAddImageActivityComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnAddImageActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnAddImageActivityComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnAddImageActivityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/web/activity/BtnAddImageActivityComponent.vue?vue&type=template&id=b3c60bfc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnAddImageActivityComponent_vue_vue_type_template_id_b3c60bfc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

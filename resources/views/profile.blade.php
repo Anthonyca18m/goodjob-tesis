@@ -85,7 +85,7 @@
                             </div>
                             <div class="card-footer p-1">
                                 <btn-edit-activity-component :activity_id="{{ $activity->id }}"></btn-edit-activity-component>
-                                <button class="btn btn-primary btn-sm float-left m-1">Agregar Imagen</button>
+                                <btn-add-image-activity-component  :activity_id="{{ $activity->id }}"></btn-add-image-activity-component>
                                 <button class="btn btn-primary btn-sm float-left m-1">Agregar Video</button>
 
                                 <btn-destroy-activity-component :activity_id="{{ $activity->id }}"></btn-destroy-activity-component>

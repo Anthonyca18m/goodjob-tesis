@@ -33,6 +33,11 @@ Route::group(['prefix' => 'web/'], function() {
     Route::get('activity/show/{activity_id}',           'API\ActivityController@show');
 
 
+    Route::post('activity/img/store',                   'API\ActivityController@storeImg');
+    Route::get('activity/img/list/{activity_id}',       'API\ActivityController@getImgs');
+    Route::delete('activity/img/delete/{activity_id}',  'API\ActivityController@destroyImg');
+
+
     Route::post('postulation/store',                    'API\PostulationController@store');
     Route::delete('postulantion/delete/{id}',           'API\PostulationController@destroy');
 

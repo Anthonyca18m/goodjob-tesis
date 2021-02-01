@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Postulation;
+use App\Models\Resource;
 use App\Models\Reward;
 use DateTime;
 use Illuminate\Http\Request;
@@ -84,6 +85,40 @@ class ActivityController extends Controller
 
             });
         }
+    }
+
+    public function storeImg(Request $request)
+    {
+        $validate = $this->validate($request, [
+            'id' => 'required|exists:activities,id',
+            'image' => 'required|max:2048'
+        ]);
+
+        if($validate){
+
+            $data = Activity::find($request->id);
+
+            $file = time().'_activity_'.$request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('activities/', $file, 'public');
+
+            $data->resource()->create([
+                'type_resource_id' => 3,
+                'resource' => getenv('APP_URL') . '/storage/activities/' . $file,
+            ]);
+        }
+    }
+
+    public function getImgs($activity_id)
+    {
+        return Activity::with(['resource' => function ($query) {
+            $query->where('type_resource_id', 3);
+        }])->find($activity_id);
+    }
+
+    public function destroyImg($id)
+    {
+        $data = Resource::where('id', $id)->first();
+        $data->delete();
     }
 
     public function update(Request $request)

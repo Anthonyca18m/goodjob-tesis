@@ -15,6 +15,7 @@ class ResourceTypeSeeder extends Seeder
         $data = [
             [ 'name' => 'Perfil' ],
             [ 'name' => 'Imagen Principal de Actividad' ],
+            [ 'name' => 'Imagenes de actividad' ],
         ];
 
         DB::table('type_resources')->insert($data);
