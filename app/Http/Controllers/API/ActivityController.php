@@ -20,6 +20,12 @@ class ActivityController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function index()
+    {
+        return Activity::with(['postulants', 'district', 'reward'])->get();
+    }
+
+
     public function show($activity_id)
     {
         return Activity::with('reward')->find($activity_id);
@@ -141,23 +147,22 @@ class ActivityController extends Controller
 
             DB::transaction(function ()  use($request) {
 
-                    $activity = Activity::with('reward')->find($request->id);
+                $activity = Activity::with('reward')->find($request->id);
 
-                    $title = preg_replace('([^A-Za-z0-9])', ' ', $request->title);
+                $title = preg_replace('([^A-Za-z0-9])', ' ', $request->title);
 
-                    $activity->title = $title;
-                    $activity->description = $request->description;
-                    $activity->date_init = $request->date_init;
-                    $activity->date_end = $request->date_end;
-                    $activity->ubigeo = $request->district;
-                    $activity->address = $request->address;
-                    $activity->address_reference = $request->reference_address;
-                    $activity->save();
+                $activity->title = $title;
+                $activity->description = $request->description;
+                $activity->date_init = $request->date_init;
+                $activity->date_end = $request->date_end;
+                $activity->ubigeo = $request->district;
+                $activity->address = $request->address;
+                $activity->address_reference = $request->reference_address;
+                $activity->save();
 
-                    $reward = Reward::find($activity->reward->id);
-                    $reward->reward = $request->reward;
-                    $reward->save();
-
+                $reward = Reward::find($activity->reward->id);
+                $reward->reward = $request->reward;
+                $reward->save();
             });
         }
     }
