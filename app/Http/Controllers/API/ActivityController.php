@@ -184,7 +184,8 @@ class ActivityController extends Controller
             $activity->reward()->delete();
 
         } else {
-            return response('Solo se puede eliminar si la actividad no ha sido comenzado.', 422);
+
+            return response(['message' => 'Solo se puede eliminar si la actividad no ha sido comenzado.'], 422);
         }
 
 
