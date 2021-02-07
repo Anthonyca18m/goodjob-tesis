@@ -28,14 +28,21 @@ class ActivityController extends Controller
 
     public function show($activity_id)
     {
-        return Activity::with('reward')->find($activity_id);
+        $activity =  Activity::with('reward')->find($activity_id);
+
+        if(!is_null($activity)){
+
+            return $activity;
+        } else {
+            return response(['message' => 'La actividad no existe'], 422);
+        }
     }
 
     public function store(Request $request)
     {
         $validate = $this->validate($request, [
             'user_id' => 'required|exists:users,id',
-            'title' => 'required|string',
+            'title' => 'required|string|unique:activities,title',
             'description' => 'required|string',
             'image' => 'required|max:1024',
             'date_init' => 'required|after_or_equal:tomorrow',
