@@ -18,6 +18,22 @@ class ClientController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function index()
+    {
+        return User::with('profile')->get();
+    }
+
+    public function show($id)
+    {
+        $user = User::with('profile')->find($id);
+
+        if(!is_null($user)) {
+            return $user;
+        } else {
+            return response(['message' => 'El usuario no existe', 'status' => 200]);
+        }
+    }
+
     public function store(Request $request)
     {
         $reqdocument = "required|min:8|max:8";
@@ -169,6 +185,21 @@ class ClientController extends Controller
             }
         }
 
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if(!is_null($user)){
+
+            $user->status = 0;
+            $user->save();
+
+            return response(['message' => "El usuario : $user->email ha sido desactivado.", 'status' => 200]);
+        } else {
+
+            return response(['message' => "El usuario no existe", 'status' => 422]);
+        }
     }
 
     public function updateImg(Request $request)

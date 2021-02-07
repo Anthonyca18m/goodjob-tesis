@@ -21,9 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'web/'], function() {
 
+    Route::get('client/list',                           'API\ClientController@index');
+    Route::get('client/show/{id}',                      'API\ClientController@show');
     Route::post('client/store',                         'API\ClientController@store');
     Route::post('client/profile/update',                'API\ClientController@update');
     Route::post('client/profile/img',                   'API\ClientController@updateImg');
+    Route::delete('client/delete/{id}',                 'API\ClientController@destroy');
 
 
     Route::post('activity/store',                       'API\ActivityController@store');

@@ -7,7 +7,7 @@
             <table class="table table-profile">
                 <tbody>
                     <div class="text-center p-3">
-                        <img src="{{ $user->image->resource }}" alt="Avatar" class="avatar">
+                        <img src="{{ $user->image->resource ?? '' }}" alt="Avatar" class="avatar">
                         @if ($user->account_type_id == 2)
                         <h4 class="mt-3">{{ $user->profile->trade_name }}</h4>
                         @else
