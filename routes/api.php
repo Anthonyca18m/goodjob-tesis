@@ -25,8 +25,9 @@ Route::group(['prefix' => 'web/'], function() {
     Route::get('client/show/{id}',                      'API\ClientController@show');
     Route::post('client/store',                         'API\ClientController@store');
     Route::post('client/profile/update',                'API\ClientController@update');
-    Route::post('client/profile/img',                   'API\ClientController@updateImg');
     Route::delete('client/delete/{id}',                 'API\ClientController@destroy');
+    Route::post('company/accept/{company_id}',         'API\ClientController@accept');
+    Route::post('company/denied/{company_id}',         'API\ClientController@denied');
 
 
     Route::post('activity/store',                       'API\ActivityController@store');

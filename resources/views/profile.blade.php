@@ -86,7 +86,6 @@
                             <div class="card-footer p-1">
                                 <btn-edit-activity-component :activity_id="{{ $activity->id }}"></btn-edit-activity-component>
                                 <btn-add-image-activity-component  :activity_id="{{ $activity->id }}"></btn-add-image-activity-component>
-                                <button class="btn btn-primary btn-sm float-left m-1">Agregar Video</button>
 
                                 <btn-destroy-activity-component :activity_id="{{ $activity->id }}"></btn-destroy-activity-component>
                                 <btn-manage-postulants-component :activity_id="{{ $activity->id }}"></btn-manage-postulants-component>
@@ -96,6 +95,43 @@
                     @endforeach
                     <div class="row justify-content-center">
                         <div>{{ $my_activities->withQueryString() }}</div>
+                    </div>
+                </div>
+            @endif
+
+            @if (Request::query('q') == 'administrator')
+                <div class="col-md-7">
+                    <h2 class="text-center bg-light rounded mb-3 p-3 border-bottom">Administrador</h2>
+                    <div class="row">
+                        @foreach ($companies as $company)
+                            <div class="col-md-12 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="{{ $company->image->resource }}" class="img-fluid" width="100" alt="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p>Razón Social: {{ $company->profile->bussiness_name }}</p>
+                                                <p>Nombre Comercial: {{ $company->profile->trade_name }}</p>
+                                                <p>RUC: {{ $company->profile->ruc }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p>Email: {{ $company->email }}</p>
+                                                <p>Fecha de Solicitud de Registro: {{ $company->created_at->format('Y/m/d H:i:s a') }}</p>
+                                                <p>Estado de cuenta: {{ ($company->status == 3) ? 'Pendiente' : 'No definido' }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <btn-accept-denied-company-component :company_id="{{ $company->id }}"></btn-accept-denied-company-component>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="row justify-content-center">
+                        <div>{{ $companies->withQueryString() }}</div>
                     </div>
                 </div>
             @endif

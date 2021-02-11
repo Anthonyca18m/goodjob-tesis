@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Postulation;
+use App\User;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -73,6 +74,7 @@ class WebController extends Controller
         $user = auth()->user();
         $postulations = Postulation::where('user_id', $user->id)->orderByDesc('updated_at')->get();
         $id_postulations = [];
+        $companies = [];
         foreach ($postulations as $rs) {
             array_push($id_postulations, $rs->activity_id);
         }
@@ -97,9 +99,18 @@ class WebController extends Controller
             ->paginate(5);
         }
 
+        if($request->q == 'administrator' && $user->account_type_id != 3){
+            return redirect()->route('web');
+        }
+
+        if($request->q == 'administrator' && $user->account_type_id == 3){
+            $companies = User::with(['profile', 'image'])->where('status', 3)->paginate(5);
+        }
+
         return view('profile')
             ->with('postulations', $postulations)
             ->with('my_activities', $my_activities)
+            ->with('companies', $companies)
             ;
     }
 }

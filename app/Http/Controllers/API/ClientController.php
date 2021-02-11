@@ -75,11 +75,11 @@ class ClientController extends Controller
 
             DB::transaction(function () use($request) {
                 $client = User::create([
-                    'account_type_id' => ($request->typeuser === true) ? 2 : 1,
+                    'account_type_id' => ($request->typeuser == true) ? 2 : 1,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'register' => 'web',
-                    'status' => ($request->typeuser === true) ? 3 : 1
+                    'status' => ($request->typeuser == true) ? 3 : 1
                 ]);
 
                 $client->profile()->create([
@@ -202,10 +202,18 @@ class ClientController extends Controller
         }
     }
 
-    public function updateImg(Request $request)
+
+    public function accept($company_id)
     {
-        $validate = $this->validate($request, [
-            'img' => 'required|max:500',
-        ]);
+        $user = User::find($company_id);
+        $user->status = 1;
+        $user->save();
+    }
+
+    public function denied($company_id)
+    {
+        $user = User::find($company_id);
+        $user->status = 0;
+        $user->save();
     }
 }
