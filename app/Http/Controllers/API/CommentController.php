@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\PuntationComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -16,12 +17,12 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'user_id' => ['required', 'exists:users,id'],
             'comment' => ['required'],
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
             PuntationComment::create([
                 'user_id' => $request->user_id,
                 'puntationable_type' => 'App\Models\Activity',
@@ -30,6 +31,9 @@ class CommentController extends Controller
                 'comment' => $request->comment,
                 'status' => 1
             ]);
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AccountBank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class BankController extends Controller
@@ -22,14 +23,14 @@ class BankController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'id' => 'required|exists:users,id',
             'bank' => 'required',
             'number_bank' => 'required|unique:account_banks,number|unique:account_banks,number_inter',
             'number_ibank' => 'required|unique:account_banks,number_inter|unique:account_banks,number',
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
 
             AccountBank::create([
                 'bank_id' => $request->bank,
@@ -38,6 +39,9 @@ class BankController extends Controller
             	'number_inter' => $request->number_ibank,
             	'status' => 1
             ]);
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 

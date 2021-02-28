@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Postulation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostulationController extends Controller
 {
@@ -16,12 +17,12 @@ class PostulationController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'user_id' => ['required', 'exists:users,id'],
             'activity_id' => ['required'],
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
             $verify = Postulation::where('user_id', $request->user_id)->where('activity_id', $request->activity_id)->first();
 
             if($verify == ''){
@@ -33,6 +34,9 @@ class PostulationController extends Controller
             } else {
                 return 1;
             }
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 

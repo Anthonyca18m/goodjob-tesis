@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class ClientController extends Controller
@@ -30,7 +31,7 @@ class ClientController extends Controller
         if(!is_null($user)) {
             return $user;
         } else {
-            return response(['message' => 'El usuario no existe', 'status' => 200]);
+            return response(['message' => 'El usuario no existe','success'=>false, 'statusCode' => 200]);
         }
     }
 
@@ -60,7 +61,7 @@ class ClientController extends Controller
                 break;
         }
 
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'name' => $reqname,
             'businessname' => "$reqcompany",
             'tradename' => "$reqcompany",
@@ -71,7 +72,7 @@ class ClientController extends Controller
             'repassword' => 'required|min:6|max:255|same:password',
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
 
             DB::transaction(function () use($request) {
                 $client = User::create([
@@ -98,23 +99,28 @@ class ClientController extends Controller
                     'resource' => config('app.default_profile')
                 ]);
             });
+
+            return response()->json(['data'=> User::OrderBy('created_at', 'desc')->limit(1)->get()]);
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 
     public function update(Request $request)
     {
-        $validate = $this->validate($request, ['id' => 'required|exists:users,id']);
+        $validate = $validate = Validator::make($request->all(), ['id' => 'required|exists:users,id']);
 
-        if($validate){
+        if(!$validate->fails()){
 
-            $user = User::find($request->id);
+            $user = User::with('profile')->find($request->id);
             $profile = Profile::where('user_id', $request->id)->first();
 
             switch ($request->updated) {
                 case 'basic':
 
                     if($user->account_type_id == 1){
-                        $validate = $this->validate($request, [
+                        $validate = Validator::make($request->all(), [
                             'name' => 'required|string|min:2|max:255',
                             'document_type' => 'required',
                             'document' => ['required', 'min:8', 'max:8', Rule::unique('profiles', 'document')->ignore($user->id, 'user_id')],
@@ -122,7 +128,7 @@ class ClientController extends Controller
                             'date_nac' => 'required',
                             'gener' => 'required'
                         ]);
-                        if($validate){
+                        if(!$validate->fails()){
 
                             $profile->name = $request->name;
                             $profile->type_document_id = $request->document_type;
@@ -130,31 +136,37 @@ class ClientController extends Controller
                             $profile->ruc = $request->ruc;
                             $profile->birth_date = $request->date_nac;
                             $profile->gener = $request->gener;
+                        } else {
+                            $message = $validate->errors();
+                            return response()->json(['errors'=>$message], 422);
                         }
                     } else if($user->account_type_id == 2){
-                        $validate = $this->validate($request, [
+                        $validate = Validator::make($request->all(), [
                             'trade_name' => 'required|string|min:2|max:255',
                             'bussines_name' => 'required|string|min:2|max:255',
                             'ruc' => ['required', 'min:11', 'max:11', Rule::unique('profiles', 'ruc')->ignore($user->id, 'user_id')],
                         ]);
-                        if($validate){
+                        if(!$validate->fails()){
                             $profile->bussiness_name = $request->bussines_name;
                             $profile->trade_name = $request->trade_name;
                             $profile->ruc = $request->ruc;
+                        } else {
+                            $message = $validate->errors();
+                            return response()->json(['errors'=>$message], 422);
                         }
                     }
                     $profile->save();
 
                     break;
                 case 'contact':
-                    $validate = $this->validate($request, [
+                    $validate = Validator::make($request->all(), [
                         'phone' => 'required',
                         'facebook' => 'required|url',
                         'twitter' => 'required|url',
                         'github' => 'required|url',
                         'linkedin' => 'required|url',
                     ]);
-                    if($validate){
+                    if(!$validate->fails()){
 
                         $profile->phone = $request->phone;
                         $profile->email_opt = $request->email_opt;
@@ -163,26 +175,38 @@ class ClientController extends Controller
                         $profile->github = $request->github;
                         $profile->linkedin = $request->linkedin;
                         $profile->save();
+                    } else {
+                        $message = $validate->errors();
+                        return response()->json(['errors'=>$message], 422);
                     }
 
 
                     break;
                 case 'address':
-                    $validate = $this->validate($request, [
+                    $validate = Validator::make($request->all(), [
                         'ubigeo' => 'required',
                         'address' => 'required|max:255',
                         'address_reference' => 'required|max:255',
                     ]);
 
-                    if($validate){
+                    if(!$validate->fails()){
                         $profile->ubigeo = $request->ubigeo;
                         $profile->address = $request->address;
                         $profile->address_reference = $request->address_reference;
                         $profile->save();
+                    } else {
+                        $message = $validate->errors();
+                        return response()->json(['errors'=>$message], 422);
                     }
 
                     break;
             }
+
+            return response()->json(['data'=> User::with('profile')->find($request->id)]);
+
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
 
     }
@@ -195,10 +219,10 @@ class ClientController extends Controller
             $user->status = 0;
             $user->save();
 
-            return response(['message' => "El usuario : $user->email ha sido desactivado.", 'status' => 200]);
+            return response(['message' => "El usuario : $user->email ha sido desactivado."]);
         } else {
 
-            return response(['message' => "El usuario no existe", 'status' => 422]);
+            return response(['message' => "El usuario no existe"], 422);
         }
     }
 

@@ -11,6 +11,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class ActivityController extends Controller
@@ -33,6 +34,7 @@ class ActivityController extends Controller
         if(!is_null($activity)){
 
             return $activity;
+
         } else {
             return response(['message' => 'La actividad no existe'], 422);
         }
@@ -40,7 +42,7 @@ class ActivityController extends Controller
 
     public function store(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'user_id' => 'required|exists:users,id',
             'title' => 'required|string|unique:activities,title',
             'description' => 'required|string',
@@ -55,7 +57,7 @@ class ActivityController extends Controller
 
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
 
             DB::transaction(function () use($request) {
 
@@ -97,17 +99,22 @@ class ActivityController extends Controller
                 }
 
             });
+
+            return response()->json(['data'=> Activity::with(['reward', 'resource', 'tags'])->orderBy('created_at', 'desc')->limit(1)->get() ]);
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 
     public function storeImg(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'id' => 'required|exists:activities,id',
             'image' => 'required|max:2048'
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
 
             $data = Activity::find($request->id);
 
@@ -118,6 +125,11 @@ class ActivityController extends Controller
                 'type_resource_id' => 3,
                 'resource' => getenv('APP_URL') . '/storage/activities/' . $file,
             ]);
+
+            return response(['data' => Activity::with('resource')->find($request->id)]);
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 
@@ -136,7 +148,7 @@ class ActivityController extends Controller
 
     public function update(Request $request)
     {
-        $validate = $this->validate($request, [
+        $validate = Validator::make($request->all(), [
             'id' => 'required|exists:activities,id',
             'title' => ['required', 'string', Rule::unique('activities', 'title')->ignore($request->id, 'id')],
             'description' => 'required|string',
@@ -150,7 +162,7 @@ class ActivityController extends Controller
 
         ]);
 
-        if($validate){
+        if(!$validate->fails()){
 
             DB::transaction(function ()  use($request) {
 
@@ -171,6 +183,9 @@ class ActivityController extends Controller
                 $reward->reward = $request->reward;
                 $reward->save();
             });
+        } else {
+            $message = $validate->errors();
+            return response()->json(['errors'=>$message], 422);
         }
     }
 
@@ -190,6 +205,7 @@ class ActivityController extends Controller
             $activity->comments()->delete();
             $activity->reward()->delete();
 
+            return response(['message' => 'Eliminado.']);
         } else {
 
             return response(['message' => 'Solo se puede eliminar si la actividad no ha sido comenzado.'], 422);
