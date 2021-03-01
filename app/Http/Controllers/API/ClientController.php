@@ -76,11 +76,11 @@ class ClientController extends Controller
 
             DB::transaction(function () use($request) {
                 $client = User::create([
-                    'account_type_id' => ($request->typeuser == true) ? 2 : 1,
+                    'account_type_id' => ($request->name == '') ? 2 : 1,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'register' => 'web',
-                    'status' => ($request->typeuser == true) ? 3 : 1
+                    'status' => ($request->name == '') ? 3 : 1
                 ]);
 
                 $client->profile()->create([
