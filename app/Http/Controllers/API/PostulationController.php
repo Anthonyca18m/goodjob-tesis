@@ -50,9 +50,9 @@ class PostulationController extends Controller
     {
         $data = Postulation::find($request->id);
         $activity = Activity::find($data->activity_id);
-        $nro_postulant = Postulation::where('activity_id', $data->activity_id)->where('status', 1)->count();
+        $nro_postulant = Postulation::where('activity_id', $data->activity_id)->where('status', 1)->get();
 
-        if($activity->person_required <= $nro_postulant)
+        if($activity->person_required > count($nro_postulant))
         {
             $data->status = 1;
             $data->save();

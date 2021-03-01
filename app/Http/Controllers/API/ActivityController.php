@@ -215,8 +215,8 @@ class ActivityController extends Controller
 
     }
 
-    public function getPostulants(Request $request, $activity_id){
-
+    public function getPostulants(Request $request, $activity_id)
+    {
         return Postulation::with('profile')->where('activity_id', $activity_id)->where('status', $request->status)->get();
     }
 
