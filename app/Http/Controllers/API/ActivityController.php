@@ -23,7 +23,7 @@ class ActivityController extends Controller
 
     public function index()
     {
-        return Activity::with(['postulants', 'district', 'reward'])->get();
+        return Activity::with(['postulants', 'district', 'reward'])->paginate(10);
     }
 
 
@@ -47,8 +47,8 @@ class ActivityController extends Controller
             'title' => 'required|string|unique:activities,title',
             'description' => 'required|string',
             'image' => 'required|max:1024',
-            'date_init' => 'required|after_or_equal:tomorrow',
-            'date_end' => 'required|after_or_equal:date_init',
+            'date_init' => 'required|after_or_equal:tomorrow|date',
+            'date_end' => 'required|after_or_equal:date_init|date',
             'nro_person' => 'required|integer',
             'district' => 'required',
             'address' => 'required',
@@ -152,8 +152,8 @@ class ActivityController extends Controller
             'id' => 'required|exists:activities,id',
             'title' => ['required', 'string', Rule::unique('activities', 'title')->ignore($request->id, 'id')],
             'description' => 'required|string',
-            'date_init' => 'required',
-            'date_end' => 'required|after_or_equal:date_init',
+            'date_init' => 'required|date',
+            'date_end' => 'required|after_or_equal:date_init|date',
             'person_required' => 'required|integer',
             'district' => 'required',
             'address' => 'required',
@@ -183,6 +183,7 @@ class ActivityController extends Controller
                 $reward->reward = $request->reward;
                 $reward->save();
             });
+            return response()->json(['data'=> Activity::with('reward')->find($request->id)]);
         } else {
             $message = $validate->errors();
             return response()->json(['errors'=>$message], 422);

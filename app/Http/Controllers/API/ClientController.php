@@ -21,7 +21,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        return User::with('profile')->get();
+        return User::with('profile')->paginate(10);
     }
 
     public function show($id)
