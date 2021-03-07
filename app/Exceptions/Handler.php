@@ -50,6 +50,33 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        // return parent::render($request, $exception);
+        $message = "";
+        $code = "";
+        $error = "";
+        switch ($exception->getCode()) {
+            case 2002:
+                $message = "Error de conexión de base de datos. Comuniquesé con un administrador.";
+                $code = $exception->getCode();
+                $error = $exception->getMessage();
+                break;
+            case '42S02':
+                $message = "Error de nombre de la tabla incorrecto o tabla no existente en la base de datos. Comuniquesé con un administrador.";
+                $code = $exception->getCode();
+                $error = $exception->getMessage();
+                break;
+            case 1049:
+                $message = "Error de base de datos inexistente. Comuniquesé con un administrador.";
+                $code = $exception->getCode();
+                $error = $exception->getMessage();
+                break;
+            default:
+                $message = "Error interno. Comuniquesé con un administrador.";
+                $code = $exception->getCode();
+                $error = $exception->getMessage();
+                break;
+        }
+
+        return response( [ 'message' => $message, 'statusCode' => $code, 'success' => false, 'error' => $error ], 500);
     }
 }
