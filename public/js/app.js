@@ -8759,7 +8759,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.img-profile {\n  border-radius: 50%;\n}\n", ""]);
+exports.push([module.i, "\n.img-profile {\r\n  border-radius: 50%;\n}\r\n", ""]);
 
 // exports
 
@@ -84517,8 +84517,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Carloz\Desktop\goodjob-tesis\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Carloz\Desktop\goodjob-tesis\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\goodjob-tesis\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\goodjob-tesis\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
