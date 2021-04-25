@@ -2899,7 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
         window.location.reload();
       })["catch"](function (err) {
         if (err.response.status == 422) {
-          Swal.fire('Oops!', err.response.data, 'error');
+          Swal.fire('Oops!', err.response.data.errors.message, 'error');
         }
       });
     }
@@ -3052,6 +3052,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('api/web/activity/update', this.activity).then(function () {
         Swal.fire('Actualizado!', 'Se ha actualizado exitosamente!', 'success');
+        window.location.reload();
       })["catch"](function (err) {
         if (err.response.status == 422) {
           _this3.errors = err.response.data.errors;

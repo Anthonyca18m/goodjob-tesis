@@ -208,8 +208,7 @@ class ActivityController extends Controller
 
             return response(['message' => 'Eliminado.']);
         } else {
-
-            return response(['message' => 'Solo se puede eliminar si la actividad no ha sido comenzado.'], 422);
+            return response()->json(['errors'=> ['message' => 'Solo se puede eliminar si la actividad no ha sido comenzado.'] ], 422);
         }
 
 

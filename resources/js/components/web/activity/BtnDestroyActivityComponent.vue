@@ -32,7 +32,7 @@ export default {
                     window.location.reload()
                 }).catch((err) => {
                     if (err.response.status == 422) {
-                        Swal.fire(  'Oops!',  err.response.data,  'error')
+                        Swal.fire(  'Oops!',  err.response.data.errors.message,  'error')
                     }
                 })
         }

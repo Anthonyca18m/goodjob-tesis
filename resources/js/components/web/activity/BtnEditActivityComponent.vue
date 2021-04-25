@@ -126,6 +126,7 @@ export default {
             axios.post('api/web/activity/update', this.activity)
             .then(() => {
                 Swal.fire(  'Actualizado!',  'Se ha actualizado exitosamente!',  'success')
+                window.location.reload()
             }).catch((err) => {
                 if (err.response.status == 422) {
                     this.errors = err.response.data.errors
